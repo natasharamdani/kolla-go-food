@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'about/contact'
+
   get 'home/hello'
   get 'home/goodbye'
 
