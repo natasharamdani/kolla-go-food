@@ -139,7 +139,7 @@ Show table
 User
 ```
 
-Some syntax
+Other syntaxes
 
 ```
 User.find(1)
