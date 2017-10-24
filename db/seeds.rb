@@ -33,3 +33,25 @@ Food.create!(
   image_url: "Batagor.jpg",
   price: 15000.00
 )
+
+Buyer.delete_all
+
+Buyer.create!(
+  email: "gmail",
+  name: "nanda",
+  phone: "021",
+  address: "depok"
+)
+
+Buyer.create!(
+  email: "ymail",
+  name: "ajeng",
+  phone: "123",
+  address: "bogor"
+)
+Buyer.create!(
+  email: "live",
+  name: "umar",
+  phone: "081",
+  address: "jakarta"
+)
