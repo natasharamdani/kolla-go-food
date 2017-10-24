@@ -1,0 +1,48 @@
+.master {
+	table {
+		border-collapse: collapse;
+	}
+}
+
+table tr td {
+	padding: 5px;
+	vertical-align: top;
+	color: white;
+}
+
+.list_image {
+	width: 60px;
+	heigth: 70px;
+}
+
+.list_description {
+	width: 60%;
+
+	dl {
+		margin: 0;
+	}
+
+	dt {
+		color: #244;
+		font-weight: bold;
+		font-size: larger;
+	}
+
+	dd {
+		margin: 0;
+	}
+}
+
+.list_actions {
+	font-size: x-small;
+	text-align: right;
+	padding-left: 1em;
+}
+
+.list_line_even  {
+	background: #FF7F00;
+}
+
+.list_line_odd {
+	background: #D2691E;
+}
