@@ -28,7 +28,7 @@ describe Food do
   describe "filter name by letter" do
     before :each do
       @food1 = create(:food, name: "Nasi Uduk")
-      @food2 = create(:food)
+      @food2 = create(:food, name: "Bubur Ayam")
       @food3 = create(:food, name: "Nasi Kuning")
     end
 
