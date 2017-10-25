@@ -4,7 +4,7 @@ class Food < ApplicationRecord
   validates :name, uniqueness: true
   validates :image_url, allow_blank: true, format: {
     with: %r{\.(gif|jpg|png)\z}i,
-    message: 'must be an URL for GIF, JPG, or PNG image.'
+    message: 'must be an URL for GIF, JPG, or PNG image'
   }
 
   def self.by_letter(letter)

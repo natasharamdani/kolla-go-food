@@ -11,24 +11,28 @@ describe Food do
     expect(food).to be_valid
   end
 
-  it "is invalid without a name" do
-    food = Food.new(
+  describe "presence of name and description" do
+    before :each do
+      @food = Food.new(
       name: nil,
-      description: "Betawi style steamed rice cooked in coconut milk.",
-      price: 10000.0
-    )
-    food.valid?
-    expect(food.errors[:name]).to include("can't be blank")
-  end
-
-  it "is invalid without a description" do
-    food = Food.new(
-      name: "Nasi Uduk",
       description: nil,
       price: 10000.0
     )
-    food.valid?
-    expect(food.errors[:description]).to include("can't be blank")
+    end
+
+    context "without name" do
+      it "is invalid without a name" do
+        @food.valid?
+        expect(@food.errors[:name]).to include("can't be blank")
+      end
+    end
+
+    context "without description" do
+      it "is invalid without a description" do
+        @food.valid?
+        expect(@food.errors[:description]).to include("can't be blank")
+      end
+    end
   end
 
   it "is invalid with a duplicate name" do
@@ -80,6 +84,37 @@ describe Food do
         expect(Food.by_letter("N")).not_to include(@food2)
       end
     end
+  end
+
+  it "is invalid with a non numeric price" do
+    food = Food.new(
+      name: "Nasi Uduk",
+      description: "Betawi style steamed rice cooked in coconut milk.",
+      price: "rupiah"
+    )
+    food.valid?
+    expect(food.errors[:price]).to include("is not a number")
+  end
+
+  it "is invalid with a price less than 0.01" do
+    food = Food.new(
+      name: "Nasi Uduk",
+      description: "Betawi style steamed rice cooked in coconut milk.",
+      price: 0.001
+    )
+    food.valid?
+    expect(food.errors[:price]).to include("must be greater than or equal to 0.01")
+  end
+
+  it "is invalid with an image_url other than .gif, .jpg, or .png" do
+    food = Food.new(
+      name: "Nasi Uduk",
+      description: "Betawi style steamed rice cooked in coconut milk.",
+      price: 10000.0,
+      image_url: "image.jpeg"
+    )
+    food.valid?
+    expect(food.errors[:image_url]).to include("must be an URL for GIF, JPG, or PNG image")
   end
 
 end
