@@ -27,23 +27,9 @@ describe Food do
 
   describe "filter name by letter" do
     before :each do
-      @food1 = Food.create(
-        name: "Nasi Uduk",
-        description: "Betawi style steamed rice cooked in coconut milk.",
-        price: 10000.0
-      )
-
-      @food2 = Food.create(
-        name: "Kerak Telor",
-        description: "Betawi traditional omelette.",
-        price: 8000.0
-      )
-
-      @food3 = Food.create(
-        name: "Nasi Semur Jengkol",
-        description: "Based on dongfruit.",
-        price: 8000.0
-      )
+      @food1 = create(:food, name: "Nasi Uduk")
+      @food2 = create(:food)
+      @food3 = create(:food, name: "Nasi Kuning")
     end
 
     context "with matching letters" do
