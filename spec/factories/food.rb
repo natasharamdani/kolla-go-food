@@ -10,6 +10,6 @@ FactoryGirl.define do
     name nil
     description nil
     price 10000.0
-    image_url "image.jpg"
+    image_url "image.jpeg"
   end
 end
