@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :carts
-  resources :store
   resources :buyers
   resources :foods
   get 'home/hello'
