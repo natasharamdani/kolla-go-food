@@ -6,13 +6,13 @@ describe Food do
   end
 
   it "is invalid without a name" do
-    food = build(:invalid_food, name: nil)
+    food = build(:invalid_food)
     food.valid?
     expect(food.errors[:name]).to include("can't be blank")
   end
 
   it "is invalid without a description" do
-    food = build(:invalid_food, description: nil)
+    food = build(:invalid_food)
     food.valid?
     expect(food.errors[:description]).to include("can't be blank")
   end
@@ -58,7 +58,7 @@ describe Food do
   end
 
   it "is invalid with an image_url other than .gif, .jpg, or .png" do
-    food = build(:invalid_food)
+    food = build(:food, image_url: "image.jpeg")
     food.valid?
     expect(food.errors[:image_url]).to include("must be an URL for GIF, JPG, or PNG image")
   end
