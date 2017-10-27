@@ -37,20 +37,20 @@ Food.create!(
 Buyer.delete_all
 
 Buyer.create!(
-  email: "gmail",
+  email: "nanda@gmail.com",
   name: "nanda",
   phone: "021",
   address: "depok"
 )
 
 Buyer.create!(
-  email: "ymail",
+  email: "ajeng@ymail.com",
   name: "ajeng",
   phone: "123",
   address: "bogor"
 )
 Buyer.create!(
-  email: "live",
+  email: "umar@live.com",
   name: "umar",
   phone: "081",
   address: "jakarta"
