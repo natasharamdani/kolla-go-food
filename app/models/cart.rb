@@ -12,4 +12,8 @@ class Cart < ApplicationRecord
 
     current_item
   end
+
+  def self.total_price(total_price, price)
+    total_price += price
+  end
 end
