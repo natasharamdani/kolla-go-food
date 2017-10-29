@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'categories/index'
+
+  resources :categories
   resources :line_items
   resources :carts
   resources :buyers

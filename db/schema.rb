@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029174702) do
+ActiveRecord::Schema.define(version: 20171029174622) do
 
   create_table "buyers", force: :cascade do |t|
     t.string "email"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20171029174702) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "categories" because of following StandardError
-#   Unknown type 'String' for column 'name'
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "foods", force: :cascade do |t|
     t.string "name"
