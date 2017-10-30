@@ -19,7 +19,8 @@ Food.create!(
   name: "Siomay",
   description: "Sudah termasuk tahu dan telur rebus.",
   image_url: "Siomay.jpg",
-  price: 20000.00
+  price: 20000.00,
+  category_id: 1
 )
 
 Food.create!(
