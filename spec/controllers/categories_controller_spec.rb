@@ -7,11 +7,16 @@ describe CategoriesController do
       expect(response).to have_http_status(:success)
     end
 
-    it "returns a list of categories, ordered by name" do
+    it "populates an array of all categories, ordered by name" do
       tradisional = create(:category, name: "Tradisional")
       khas_betawi = create(:category, name: "Khas Betawi")
       get :index
       expect(assigns(:categories)).to match_array([khas_betawi, tradisional])
+    end
+
+    it "renders the :index template" do
+      get :index
+      expect(response).to render_template :index
     end
   end
 
