@@ -76,4 +76,18 @@ describe Food do
 
     expect { food.destroy }.not_to change(Food, :count)
   end
+
+  it "is valid without a category" do
+    food = build(:food, category: nil)
+
+    expect(build(:food)).to be_valid
+  end
+
+  it "is valid with a duplicate category" do
+    food1 = create(:food, category: "Tradisional")
+    food2 = build(:food, category: "Tradisional")
+
+    food2.valid?
+    expect(food2.errors[:name]).not_to include("has already been taken")
+  end
 end
