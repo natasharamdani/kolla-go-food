@@ -138,15 +138,26 @@ describe CategoriesController do
       @category = create(:category)
     end
 
-    it "deletes the category from the database" do
-      expect{
-        delete :destroy, params: { id: @category }
-      }.to change(Category, :count).by(-1)
+    context "with associated foods" do
+      it "does not delete the category from the database" do
+        food = create(:food, category: category)
+        expect{
+          delete :destroy, params: { id: @category }
+        }.not_to change(Category, :count)
+      end
     end
 
-    it "redirects to categories#show" do
-      delete :destroy, params: { id: @category }
-      expect(response).to redirect_to categories_path
+    context "without associated foods" do
+      it "deletes the category from the database" do
+        expect{
+          delete :destroy, params: { id: @category }
+        }.to change(Category, :count).by(-1)
+      end
+
+      it "redirects to categories#index" do
+        delete :destroy, params: { id: @category }
+        expect(response).to redirect_to categories_url
+      end
     end
   end
 end

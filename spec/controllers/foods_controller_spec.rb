@@ -147,9 +147,9 @@ describe FoodsController do
       }.to change(Food, :count).by(-1)
     end
 
-    it "redirects to foods#show" do
+    it "redirects to foods#index" do
       delete :destroy, params: { id: @food }
-      expect(response).to redirect_to foods_path
+      expect(response).to redirect_to foods_url
     end
   end
 end

@@ -131,10 +131,10 @@ RSpec.describe CartsController, type: :controller do
       }.to change(Cart, :count).by(-1)
     end
 
-    it "redirects to the store index" do
+    it "redirects to store#index" do
       cart = Cart.create! valid_attributes
       delete :destroy, params: {id: cart.to_param}, session: valid_session
-      expect(response).to redirect_to(store_index_url)
+      expect(response).to redirect_to(store_index_path)
     end
   end
 
