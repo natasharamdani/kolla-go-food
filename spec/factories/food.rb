@@ -10,4 +10,8 @@ FactoryGirl.define do
     description nil
     price 10000.0
   end
+
+  factory :food_category, parent: :food do
+    association :category
+  end
 end

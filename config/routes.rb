@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/create'
-
-  get 'categories/new'
-
-  get 'categories/index'
-
   resources :categories
   resources :line_items
   resources :carts

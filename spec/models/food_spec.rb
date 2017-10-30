@@ -84,8 +84,9 @@ describe Food do
   end
 
   it "is valid with a duplicate category" do
-    food1 = create(:food, category: "Tradisional")
-    food2 = build(:food, category: "Tradisional")
+    category = create(:category)
+    food1 = create(:food_category, category: category)
+    food2 = build(:food_category, category: category)
 
     food2.valid?
     expect(food2.errors[:name]).not_to include("has already been taken")
