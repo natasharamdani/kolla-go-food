@@ -10,12 +10,7 @@ Food.delete_all
 
 Food.create!(
   name: "Dimsum",
-  description:
-    %{<p>
-      <em>3 rasa dalam 1 porsi</em>
-      Dimsum isi ayam, udang, dan jamur.
-      Ayo coba!
-      </p>},
+  description: "Isi ayam, udang, dan jamur.",
   image_url: "Dimsum.jpg",
   price: 30000.00
 )
@@ -54,4 +49,14 @@ Buyer.create!(
   name: "umar",
   phone: "081",
   address: "jakarta"
+)
+
+Category.delete_all
+
+Category.create!(
+  name: "Tradisional"
+)
+
+Category.create!(
+  name: "Khas Betawi"
 )

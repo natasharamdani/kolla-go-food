@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20171030015428) do
     t.decimal "price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "category"
     t.integer "category_id"
     t.index ["category_id"], name: "index_foods_on_category_id"
   end
