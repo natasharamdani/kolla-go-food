@@ -109,6 +109,7 @@ describe FoodsController do
         patch :update, params: { id: @food, food: attributes_for(:food) }
         expect(assigns(:food)).to eq @food
       end
+
       it "changes @food's attributes" do
         patch :update, params: { id: @food, food: attributes_for(:food, name: 'Nasi Uduk') }
         @food.reload
