@@ -27,6 +27,14 @@ describe CategoriesController do
       expect(assigns(:category)).to eq category
     end
 
+    it "populates an array of all foods in the category" do
+      category = create(:category)
+      food1 = create(:food, category: category)
+      food2 = create(:food, category: category)
+      get :show, params: { id: category }
+      expect(assigns(:category).foods).to match_array([food1, food2])
+    end
+
     it "renders the :show template" do
       category = create(:category)
       get :show, params: { id: category }

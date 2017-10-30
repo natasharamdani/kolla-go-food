@@ -29,6 +29,22 @@ Food.create!(
   price: 15000.00
 )
 
+Food.create!(
+  name: "Bir Pletok",
+  description: "Traditional Beer from Jakarta.",
+  image_url: nil,
+  price: 25000.00,
+  category_id: 2
+)
+
+Food.create!(
+  name: "Roti Buaya",
+  description: "Betawi bread in the shape of crocodile.",
+  image_url: nil,
+  price: 5000.00,
+  category_id: 1
+)
+
 Buyer.delete_all
 
 Buyer.create!(
@@ -43,12 +59,6 @@ Buyer.create!(
   name: "ajeng",
   phone: "123",
   address: "bogor"
-)
-Buyer.create!(
-  email: "umar@live.com",
-  name: "umar",
-  phone: "081",
-  address: "jakarta"
 )
 
 Category.delete_all
