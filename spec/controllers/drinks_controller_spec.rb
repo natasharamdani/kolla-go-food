@@ -88,12 +88,12 @@ describe DrinksController do
     context 'without valid attributes' do
       it "does not save the new drink in the database" do
         expect{
-          post :create, params: { drink: attributes_for(:drink) }
+          post :create, params: { drink: attributes_for(:invalid_drink) }
         }.not_to change(Drink, :count)
       end
 
       it "re-renders the :new template" do
-        post :create, params: { drink: attributes_for(:drink) }
+        post :create, params: { drink: attributes_for(:invalid_drink) }
         expect(response).to render_template :new
       end
     end

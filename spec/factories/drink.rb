@@ -5,7 +5,7 @@ FactoryGirl.define do
     price 10000.0
   end
 
-  factory :invalid_drink do
+  factory :invalid_drink, parent: :drink do
     name nil
     description nil
     price 10000.0
