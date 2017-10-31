@@ -140,7 +140,7 @@ describe CategoriesController do
 
     context "with associated foods" do
       it "does not delete the category from the database" do
-        food = create(:food, category: category)
+        food = create(:food, category: @category)
         expect{
           delete :destroy, params: { id: @category }
         }.not_to change(Category, :count)
