@@ -8,7 +8,6 @@ FactoryGirl.define do
   factory :invalid_food, parent: :food do
     name nil
     description nil
-    price 10000.0
   end
 
   factory :food_category, parent: :food do
