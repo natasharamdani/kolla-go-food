@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.collection_select :category, Category.order(:name),:id,:name, include_blank: true, id: :food_category %>
+    <%= form.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true, id: :food_category %>
   </div>
 
   <div class="field">

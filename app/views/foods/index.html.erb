@@ -6,13 +6,13 @@
   <% @foods.each do |food| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td>
-        <%= image_tag(food.image_url, class: 'list_image') %>
+        <%= image_tag(food.image_url, class: 'list_image') unless food.image_url.blank? %>
       </td>
       <td class="list_description">
         <dl>
           <dt><%= food.name %></dt>
           <dd><%= truncate(strip_tags(food.description), length: 80) %></dd>
-          <dt><%= food.category_id %></dt>
+          Kategori : <%= food.category.try(:name) %>
         </dl>
       </td>
       <td class="list_action">
