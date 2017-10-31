@@ -156,7 +156,7 @@ describe CategoriesController do
 
       it "redirects to categories#index" do
         delete :destroy, params: { id: @category }
-        expect(response).to redirect_to categories_url
+        expect(response).to redirect_to categories_path
       end
     end
   end

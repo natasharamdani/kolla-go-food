@@ -4,8 +4,8 @@ describe DrinksController do
   describe 'GET #index' do
     context 'with params[:letter]' do
       it "populates an array of drink starting with the letter" do
-        drink1 = create(:drink, name: "Jus Jeruk")
-        drink2 = create(:drink, name: "Teh Tarik")
+        drink1 = create(:drink, name: 'Jus Jeruk')
+        drink2 = create(:drink, name: 'Teh Tarik')
         get :index, params: { letter: 'J' }
         expect(assigns(:drinks)).to match_array([drink1])
       end
@@ -81,7 +81,7 @@ describe DrinksController do
 
       it "redirects to drinks#show" do
         post :create, params: { drink: attributes_for(:drink) }
-        expect(response).to redirect_to(drink_path(assigns[:drink]))
+        expect(response).to redirect_to(drink_path(assigns(:drink)))
       end
     end
 
@@ -111,14 +111,45 @@ describe DrinksController do
       end
 
       it "changes @drink's attributes" do
-        patch :update, params { id: @drink, drink: attributes_for(:drink, name: '') }
+        patch :update, params { id: @drink, drink: attributes_for(:drink, name: 'Jus Mangga') }
+        @drink.reload
+        expect(@drink.name).to eq('Jus Mangga')
       end
 
-      it "redirects to the drink"
+      it "redirects to the drink" do
+        patch :update, params { id: @drink, drink: attributes_for(:drink) }
+        expect(response).to redirect_to @drink
+      end
     end
 
+    context 'without valid attributes' do
+      it "does not update the new drink in the database" do
+        patch :update, params { id: @drink, drink: attributes_for(:drink, name: 'Jus Mangga', description: nil) }
+        @drink.reload
+        expect(@drink.name).not_to eq('Jus Mangga')
+      end
 
+      it "re-renders the :edit template" do
+        patch :update, params { id: @drink, drink: attributes_for(:invalid_drink) }
+        expect(response).to render_template :edit
+      end
+    end
   end
 
-  describe 'DELETE #destroy'
+  describe 'DELETE #destroy' do
+    before :each do
+      @drink = create(:drink)
+    end
+
+    it "deletes the drink from the database" do
+      expect{
+        delete :destroy, params: { id: @drink }
+      }.to change(Drink, :count).by(-1)
+    end
+
+    it "redirects to drinks#index" do
+      delete :destroy, params: { id: @drink }
+      expect(response).to redirect_to drinks_path
+    end
+  end
 end

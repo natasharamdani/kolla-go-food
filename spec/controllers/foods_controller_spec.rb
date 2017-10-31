@@ -149,7 +149,7 @@ describe FoodsController do
 
     it "redirects to foods#index" do
       delete :destroy, params: { id: @food }
-      expect(response).to redirect_to foods_url
+      expect(response).to redirect_to foods_path
     end
   end
 end
