@@ -12,7 +12,7 @@
         <dl>
           <dt><%= food.name %></dt>
           <dd><%= truncate(strip_tags(food.description), length: 80) %></dd>
-          Kategori : <%= food.category.try(:name) %>
+          Tag: <%= food.category.try(:name) %>
         </dl>
       </td>
       <td class="list_action">
