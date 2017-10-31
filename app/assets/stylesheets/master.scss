@@ -1,50 +1,52 @@
 .master {
-	table {
-		border-collapse: collapse;
-	}
+  table {
+    border-collapse: collapse;
+  }
 
-	table tr td {
-		padding: 5px;
-		vertical-align: top;
-		color: white;
-	}
+  table tr {
+    border: solid #fff;
+  }
+  table tr td {
+    padding: 5px;
+    vertical-align: top;
+  }
 
-	.list_image {
-		width: 60px;
-		heigth: 70px;
-	}
+  .list_image {
+    width: 60px;
+    height: 60px;
+  }
 
-	.list_description {
-		width: 60%;
+  .list_description {
+    width: 400px;
+    
+    dl {
+      margin: 0;
+    }
 
-		dl {
-			margin: 0;
-		}
+    dt {
+      color: #244;
+      font-weight: bold;
+      font-size: larger;
+    }
 
-		dt {
-			color: #244;
-			font-weight: bold;
-			font-size: larger;
-		}
+    dd {
+      margin: 0;
+    }
+  }
 
-		dd {
-			margin: 0;
-		}
-	}
+  .list_action {
+    font-size: x-small;
+    font-align: right;
+    padding-left: 1em;
+  }
 
-	.list_actions {
-		font-size: x-small;
-		text-align: right;
-		padding-left: 1em;
-	}
+  .list_line_even {
+    background: #FF7F00;
+  }
 
-	.list_line_even  {
-		background: #FF7F00;
-	}
-
-	.list_line_odd {
-		background: #D2691E;
-	}
+  .list_line_odd {
+    background: #D2691E;
+  }
 }
 
 body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
@@ -52,7 +54,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 #banner {
   position: relative;
   min-height: 40px;
-  background: #9c9;
+  background: white;
   padding: 10px;
   border-bottom: 2px solid;
   font: small-caps 40px/40px "Times New Roman", serif;
@@ -73,7 +75,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 }
 
 #columns {
-  background: #141;
+  background: #9c9;
   display: flex;
 
   #main {
@@ -84,7 +86,7 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
 
   #side {
     padding: 1em 2em;
-    background: #141;
+    background: #9c9;
 
     ul {
       padding: 0;
@@ -93,12 +95,23 @@ body, body > p, body > ol, body > ul, body > td {margin: 8px !important}
         list-style: none;
 
         a {
-          color: #bfb;
+          color: #141;
           font-size: small;
         }
       }
     }
   }
+}
+
+p, div.tags_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+.tags {
+  background-color: LightGrey;
+  font-size: 10px;
 }
 
 @media all and (max-width: 800px) {
