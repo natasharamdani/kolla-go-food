@@ -81,7 +81,7 @@ describe FoodsController do
 
       it "redirects to foods#show" do
         post :create, params: { food: attributes_for(:food) }
-        expect(response).to redirect_to(food_path(assigns[:food]))
+        expect(response).to redirect_to(food_path(assigns(:food)))
       end
     end
 
@@ -109,6 +109,7 @@ describe FoodsController do
         patch :update, params: { id: @food, food: attributes_for(:food) }
         expect(assigns(:food)).to eq @food
       end
+
       it "changes @food's attributes" do
         patch :update, params: { id: @food, food: attributes_for(:food, name: 'Nasi Uduk') }
         @food.reload
@@ -146,9 +147,9 @@ describe FoodsController do
       }.to change(Food, :count).by(-1)
     end
 
-    it "redirects to foods#show" do
+    it "redirects to foods#index" do
       delete :destroy, params: { id: @food }
-      expect(response).to redirect_to foods_path
+      expect(response).to redirect_to foods_url
     end
   end
 end

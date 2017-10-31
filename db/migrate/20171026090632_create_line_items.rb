@@ -1,4 +1,4 @@
-class CreateLineItem < ActiveRecord::Migration[5.1]
+class CreateLineItems < ActiveRecord::Migration[5.1]
   def change
     create_table :line_items do |t|
       t.references :food, foreign_key: true

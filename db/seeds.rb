@@ -10,12 +10,7 @@ Food.delete_all
 
 Food.create!(
   name: "Dimsum",
-  description:
-    %{<p>
-      <em>3 rasa dalam 1 porsi</em>
-      Dimsum isi ayam, udang, dan jamur.
-      Ayo coba!
-      </p>},
+  description: "Isi ayam, udang, dan jamur.",
   image_url: "Dimsum.jpg",
   price: 30000.00
 )
@@ -24,7 +19,8 @@ Food.create!(
   name: "Siomay",
   description: "Sudah termasuk tahu dan telur rebus.",
   image_url: "Siomay.jpg",
-  price: 20000.00
+  price: 20000.00,
+  category_id: 1
 )
 
 Food.create!(
@@ -32,6 +28,22 @@ Food.create!(
   description: "Nikmat dan tanpa bahan pengawet.",
   image_url: "Batagor.jpg",
   price: 15000.00
+)
+
+Food.create!(
+  name: "Bir Pletok",
+  description: "Traditional Beer from Jakarta.",
+  image_url: nil,
+  price: 25000.00,
+  category_id: 2
+)
+
+Food.create!(
+  name: "Roti Buaya",
+  description: "Betawi bread in the shape of crocodile.",
+  image_url: nil,
+  price: 5000.00,
+  category_id: 1
 )
 
 Buyer.delete_all
@@ -49,9 +61,13 @@ Buyer.create!(
   phone: "123",
   address: "bogor"
 )
-Buyer.create!(
-  email: "umar@live.com",
-  name: "umar",
-  phone: "081",
-  address: "jakarta"
+
+Category.delete_all
+
+Category.create!(
+  name: "Tradisional"
+)
+
+Category.create!(
+  name: "Khas Betawi"
 )

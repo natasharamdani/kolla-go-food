@@ -55,6 +55,6 @@ describe BuyersController do
 
   describe 'DELETE #destroy' do
     it "deletes the food from the database"
-    it "redirects to buyers#show"
+    it "redirects to buyers#index"
   end
 end
