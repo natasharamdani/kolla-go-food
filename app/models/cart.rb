@@ -20,4 +20,8 @@ class Cart < ApplicationRecord
     end
     total_price
   end
+
+  def destroy
+
+  end
 end
