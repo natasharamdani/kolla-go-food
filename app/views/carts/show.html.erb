@@ -3,7 +3,6 @@
 <h2>Your Cart</h2>
 
 <table>
-  <% total_price = 0.0 %>
   <% @cart.line_items.each do |item| %>
     <tr>
       <td><%= item.quantity %> ×</td>
