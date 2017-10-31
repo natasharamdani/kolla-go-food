@@ -8,8 +8,8 @@ describe StoreController do
     end
 
     it "returns a list of foods, ordered by name" do
-      nasi_uduk = create(:food, name: "Nasi Uduk")
-      kerak_telor = create(:food, name: "Kelar Telor")
+      nasi_uduk = create(:food, name: 'Nasi Uduk')
+      kerak_telor = create(:food, name: 'Kelar Telor')
       get :index
       expect(assigns(:foods)).to match_array([kerak_telor, nasi_uduk])
     end

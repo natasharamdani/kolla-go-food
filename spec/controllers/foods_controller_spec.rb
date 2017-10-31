@@ -4,8 +4,8 @@ describe FoodsController do
   describe 'GET #index' do
     context 'with params[:letter]' do
       it "populates an array of foods starting with the letter" do
-        nasi_uduk = create(:food, name: "Nasi Uduk")
-        kerak_telor = create(:food, name: "Kelar Telor")
+        nasi_uduk = create(:food, name: 'Nasi Uduk')
+        kerak_telor = create(:food, name: 'Kelar Telor')
         get :index, params: { letter: 'N' }
         expect(assigns(:foods)).to match_array([nasi_uduk])
       end
@@ -18,8 +18,8 @@ describe FoodsController do
 
     context 'without params[:letter]' do
       it "populates an array of all foods" do
-        nasi_uduk = create(:food, name: "Nasi Uduk")
-        kerak_telor = create(:food, name: "Kelar Telor")
+        nasi_uduk = create(:food, name: 'Nasi Uduk')
+        kerak_telor = create(:food, name: 'Kelar Telor')
         get :index
         expect(assigns(:foods)).to match_array([nasi_uduk, kerak_telor])
       end
@@ -81,7 +81,7 @@ describe FoodsController do
 
       it "redirects to foods#show" do
         post :create, params: { food: attributes_for(:food) }
-        expect(response).to redirect_to(food_path(assigns[:food]))
+        expect(response).to redirect_to(food_path(assigns(:food))
       end
     end
 
