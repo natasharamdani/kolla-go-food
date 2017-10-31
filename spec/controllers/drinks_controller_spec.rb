@@ -106,31 +106,31 @@ describe DrinksController do
 
     context 'with valid attributes' do
       it "locates the requested @drink" do
-        patch :update, params { id: @drink, drink: attributes_for(:drink) }
+        patch :update, params: { id: @drink, drink: attributes_for(:drink) }
         expect(assigns(:drink)).to eq @drink
       end
 
       it "changes @drink's attributes" do
-        patch :update, params { id: @drink, drink: attributes_for(:drink, name: 'Jus Mangga') }
+        patch :update, params: { id: @drink, drink: attributes_for(:drink, name: 'Jus Mangga') }
         @drink.reload
         expect(@drink.name).to eq('Jus Mangga')
       end
 
       it "redirects to the drink" do
-        patch :update, params { id: @drink, drink: attributes_for(:drink) }
+        patch :update, params: { id: @drink, drink: attributes_for(:drink) }
         expect(response).to redirect_to @drink
       end
     end
 
     context 'without valid attributes' do
       it "does not update the new drink in the database" do
-        patch :update, params { id: @drink, drink: attributes_for(:drink, name: 'Jus Mangga', description: nil) }
+        patch :update, params: { id: @drink, drink: attributes_for(:drink, name: 'Jus Mangga', description: nil) }
         @drink.reload
         expect(@drink.name).not_to eq('Jus Mangga')
       end
 
       it "re-renders the :edit template" do
-        patch :update, params { id: @drink, drink: attributes_for(:invalid_drink) }
+        patch :update, params: { id: @drink, drink: attributes_for(:invalid_drink) }
         expect(response).to render_template :edit
       end
     end
