@@ -63,10 +63,6 @@ describe Food do
     expect(food.errors[:image_url]).to include("must be an URL for GIF, JPG, or PNG image")
   end
 
-  it "has a valid factory" do
-    expect(build(:food)).to be_valid
-  end
-
   it "can't be destroyed while it has line_item(s)" do
     cart = create(:cart)
     food = create(:food)

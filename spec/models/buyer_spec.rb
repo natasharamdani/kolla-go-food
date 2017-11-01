@@ -54,8 +54,4 @@ describe Buyer do
     buyer.valid?
     expect(buyer.errors[:phone]).to include("is too long (maximum is 12 characters)")
   end
-
-  it "has a valid factory" do
-    expect(build(:buyer)).to be_valid
-  end
 end
