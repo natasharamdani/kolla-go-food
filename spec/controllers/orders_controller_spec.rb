@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe OrdersController do
+
+  let(:valid_session) { {} }
+
   it "includes CurrentCart" do
     expect(OrdersController.ancestors.include? CurrentCart).to eq true
   end
@@ -112,12 +115,12 @@ describe OrdersController do
     context "with invalid attributes" do
       it "does not save the new order in the database" do
         expect{
-          post :create, params: { order: attributes_for(:order) }
+          post :create, params: { order: attributes_for(:invalid_order) }
         }.not_to change(Order, :count)
       end
 
       it "re-renders the :new template" do
-        post :create, params: { order: attributes_for(:order) }
+        post :create, params: { order: attributes_for(:invalid_order) }
         expect(response).to render_template :new
       end
     end
