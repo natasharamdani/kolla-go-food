@@ -35,9 +35,9 @@ describe LineItemsController do
       }.to change(LineItem, :count).by(1)
     end
 
-    it 'redirects to store#index' do
+    it "redirects to store#index" do
       post :create, params: { food_id: @food.id }
-      expect(response).to redirect_to(store_index_path)
+      expect(response).to redirect_to(store_index_url)
     end
 
     context 'with existing line_item with the same food' do
