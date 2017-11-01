@@ -2,26 +2,4 @@
 
 <h2>Your Cart</h2>
 
-<<<<<<< HEAD
-<table>
-<<<<<<< HEAD
-  <%= render @cart.line_items %>
-=======
-  <% @cart.line_items.each do |item| %>
-    <tr>
-      <td><%= item.quantity %> ×</td>
-      <td><%= item.food.name %></td>
-      <td class="item_price"><%= number_to_currency(item.total_price, unit: "Rp ", delimiter: ".", separator: ",") %></td>
-    </tr>
-  <% end %>
->>>>>>> 447d36e2a2ed695f6b7b3cf012f50d5b1fc31e7d
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(@cart.total_price, unit: "Rp ", delimiter: ".", separator: ",") %></td>
-  </tr>
-</table>
-
-<%= button_to 'Empty Cart', cart_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-=======
 <%= render @cart %>
->>>>>>> 8003c247ec8b27c0faf36539d156404a551a4320
