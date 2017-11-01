@@ -3,7 +3,7 @@ FactoryGirl.define do
     name { Faker::Superhero.name }
     address { Faker::Address.city }
     email { Faker::Internet.email }
-    payment_type { Faker::Number.between(0, 2) }
+    payment_type "Cash"
   end
 
   factory :invalid_order, parent: :order do
