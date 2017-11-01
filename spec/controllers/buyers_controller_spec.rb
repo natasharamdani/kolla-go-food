@@ -28,7 +28,7 @@ describe BuyersController do
     it "renders the :edit template"
   end
 
-  describe 'GET #create' do
+  describe 'POST #create' do
     context 'with valid attributes' do
       it "saves the new buyer in the database"
       it "redirects to buyers#show"
