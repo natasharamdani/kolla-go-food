@@ -18,7 +18,6 @@ class Order < ApplicationRecord
     cart.line_items.each do |item|
       item.cart_id = nil
       line_items << item
-
     end
   end
 end

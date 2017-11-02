@@ -61,7 +61,7 @@ describe Order do
       expect{
         @order.add_line_items(@cart)
         @order.save
-      }.to change(@cart.line_items, :count).by(1)
+      }.to change(@cart.line_items, :count).by(-1)
     end
   end
 end

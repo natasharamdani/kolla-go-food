@@ -67,7 +67,7 @@ describe OrdersController do
       end
 
       it "redirects to store#index" do
-        delete :destroy, params: { id: @category }
+        get :new
         expect(response).to redirect_to store_index_path
       end
     end
@@ -89,6 +89,11 @@ describe OrdersController do
 
   describe 'POST #create' do
     context "with valid attributes" do
+      before :each do
+        @cart = create(:cart)
+        session[:cart_id] = @cart.id
+      end
+
       it "saves the new order in the database" do
         expect{
           post :create, params: { order: attributes_for(:order) }
@@ -106,9 +111,9 @@ describe OrdersController do
         expect(session[:cart_id]).to eq nil
       end
 
-      it "redirects to orders#show" do
+      it "redirects to store#index" do
         post :create, params: { order: attributes_for(:order) }
-        expect(response).to redirect_to(order_path(assigns(:order)))
+        expect(response).to redirect_to(store_index_path)
       end
     end
 

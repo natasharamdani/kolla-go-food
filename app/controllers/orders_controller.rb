@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   include CurrentCart
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_cart_isnt_empty, only: :new
+  before_action :set_cart, only: [:new, :create]
 
   def index
     @orders = Order.all
@@ -18,10 +20,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.add_line_items(@cart)
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        Cart.destroy(session[:cart_id])
+        session[:cart_id] = nil
+
+        format.html { redirect_to store_index_path, notice: 'Thank you for your order.' }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
@@ -58,5 +64,11 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:order).permit(:name, :address, :email, :payment_type)
+    end
+
+    def ensure_cart_isnt_empty
+      if @cart.line_items.empty?
+        redirect_to store_index_path, notice: 'Your cart is empty.'
+      end
     end
 end
