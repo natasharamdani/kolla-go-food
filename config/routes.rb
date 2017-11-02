@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/index'
+
   root 'store#index', as: 'store_index'
 
   resources :foods
