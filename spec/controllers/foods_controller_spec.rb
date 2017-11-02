@@ -71,7 +71,7 @@ describe FoodsController do
     end
   end
 
-  describe 'GET #create' do
+  describe 'POST #create' do
     context 'with valid attributes' do
       it "saves the new food in the database" do
         expect{
@@ -124,7 +124,7 @@ describe FoodsController do
 
     context 'without valid attributes' do
       it "does not update the new food in the database" do
-        patch :update, params: { id: @food, food: attributes_for(:food, name: 'Nasi Uduk', description: nil) }
+        patch :update, params: { id: @food, food: attributes_for(:invalid_food) }
         @food.reload
         expect(@food.name).not_to eq('Nasi Uduk')
       end
@@ -149,7 +149,7 @@ describe FoodsController do
 
     it "redirects to foods#index" do
       delete :destroy, params: { id: @food }
-      expect(response).to redirect_to foods_url
+      expect(response).to redirect_to foods_path
     end
   end
 end

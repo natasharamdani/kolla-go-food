@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table>
+  <% @orders.each do |order| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <td><%= order.name %></td>
+      <td><%= order.address %></td>
+      <td><%= order.email %></td>
+      <td><%= order.payment_type %></td>
+      <td class="list_action">
+        <%= link_to 'Show', order %><br>
+        <%= link_to 'Edit', edit_order_path(order) %><br>
+        <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>

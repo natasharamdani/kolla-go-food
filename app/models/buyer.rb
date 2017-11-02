@@ -6,5 +6,4 @@ class Buyer < ApplicationRecord
     message: 'must be a valid email address'
   }
   validates :phone, numericality: true, length: { maximum: 12 }
-
 end

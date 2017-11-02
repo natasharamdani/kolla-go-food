@@ -68,7 +68,7 @@ describe CategoriesController do
     end
   end
 
-  describe 'GET #create' do
+  describe 'POST #create' do
     context 'with valid attributes' do
       it "saves the new category in the database" do
         expect{
@@ -156,7 +156,7 @@ describe CategoriesController do
 
       it "redirects to categories#index" do
         delete :destroy, params: { id: @category }
-        expect(response).to redirect_to categories_url
+        expect(response).to redirect_to categories_path
       end
     end
   end
