@@ -2,22 +2,31 @@
 
 <h1>Orders</h1>
 
+<br>
+
 <table>
+  <tr>
+   <th width="40px">ID</th>
+   <th width="100px">Name</th>
+   <th width="100px">Address</th>
+   <th width="100px">Email</th>
+   <th width="120px">Payment Type</th>
+   <th width="180px">Total Price</th>
+ </tr>
   <% @orders.each do |order| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" align="center">
+      <td class="list_action">
+        <%= link_to order.id, order %>
+      </td>
       <td><%= order.name %></td>
       <td><%= order.address %></td>
       <td><%= order.email %></td>
       <td><%= order.payment_type %></td>
-      <td class="list_action">
-        <%= link_to 'Show', order %><br>
-        <%= link_to 'Edit', edit_order_path(order) %><br>
-        <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </td>
+      <td><%= number_to_currency(order.total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
     </tr>
   <% end %>
 </table>
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+Click Order ID to show Detailed View

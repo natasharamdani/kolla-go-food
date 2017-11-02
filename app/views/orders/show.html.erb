@@ -1,24 +1,54 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @order.name %>
-</p>
+<h1>Detailed View</h1>
 
-<p>
-  <strong>Address:</strong>
-  <%= @order.address %>
-</p>
+<br>
 
-<p>
-  <strong>Email:</strong>
-  <%= @order.email %>
-</p>
+<table>
+    <tr>
+      <td align="right"><strong>Order ID :</strong></td>
+      <td><%= @order.id %></td>
+    </tr>
+    <tr>
+      <td align="right"><strong>Name :</strong></td>
+      <td><%= @order.name %></td>
+    </tr>
+    <tr>
+      <td align="right"><strong>Address :</strong></td>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <td align="right"><strong>Email :</strong></td>
+      <td><%= @order.email %></td>
+    </tr>
+    <tr>
+      <td align="right"><strong>Payment Type :</strong></td>
+      <td><%= @order.payment_type %></td>
+    </tr>
+</table>
 
-<p>
-  <strong>Payment Type:</strong>
-  <%= @order.payment_type %>
-</p>
+<br>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<table>
+  <tr>
+   <th width="120px">Item</th>
+   <th width="40px">Quantity</th>
+   <th width="120px">Price</th>
+   <th width="120px">Sub Total</th>
+ </tr>
+  <% @order.line_items.each do |item| %>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>"  align="center">
+      <td><%= item.food.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= number_to_currency(item.food.price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+      <td><%= number_to_currency(item.total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+    </tr>
+  <% end %>
+</table>
+
+<strong style="padding-left: 240px">Total Price :</strong>
+<%= number_to_currency(@order.total_price, unit: "Rp", delimiter: ".", separator: ",") %>
+
+<br><br>
+
 <%= link_to 'Back', orders_path %>
