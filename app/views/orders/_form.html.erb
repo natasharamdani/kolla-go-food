@@ -27,11 +27,9 @@
   </div>
 
   <div class="field">
-    <%= form.label :payment_type %>
-    <%= form.select :payment_type, Order.payment_types.keys, prompt: 'Select a payment type' %>
+    <%= form.label :payment %>
+    <%= form.select :payment_type, Order.payment_types.keys, prompt: 'Select payment type' %>
   </div>
-
-  <br>
 
   <div class="actions">
     <%= form.submit %>
