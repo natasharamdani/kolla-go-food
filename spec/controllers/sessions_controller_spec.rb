@@ -21,7 +21,7 @@ describe SessionsController do
 
       it "redirects to admin index page" do
         post :create, params: { username: 'user1', password: 'longpassword' }
-        expect(response).to redirect_to admin_path
+        expect(response).to redirect_to admin_index_path
       end
     end
 
