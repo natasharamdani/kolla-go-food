@@ -1,11 +1,11 @@
 class Order < ApplicationRecord
-  has_many :line_items, dependent: :destroy
-
   enum payment_type: {
     "Cash" => 0,
     "Go Pay" => 1,
     "Credit Card" => 2
   }
+
+  has_many :line_items, dependent: :destroy
 
   validates :name, :address, :email, :payment_type, presence: true
   validates :email, format: {
