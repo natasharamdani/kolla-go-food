@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :user do
-    name { Faker::Internet.user_name }
-    password { Faker::Internet.password }
-    password_confirmation password
+    username { Faker::Internet.user_name }
+    password "{ Faker::Internet.password }"
+    password_confirmation "{ Faker::Internet.password }"
   end
 
   factory :invalid_user, parent: :user do
-    name nil
+    username nil
     password nil
     password_confirmation nil
   end

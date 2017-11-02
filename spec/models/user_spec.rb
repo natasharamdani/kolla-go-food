@@ -16,7 +16,7 @@ describe User do
     user2 = build(:user, username: "nanda")
 
     user2.valid?
-    expect(user2.errors[:email]).to include("has already been taken")
+    expect(user2.errors[:username]).to include("has already been taken")
   end
 
   context "on new user" do
@@ -29,7 +29,7 @@ describe User do
     it "is invalid with less than 8 characters password" do
       user = build(:user, password: "short", password_confirmation: "short")
       user.valid?
-      expect(user.errors[:password]).to include("is too short (min 8 chars)")
+      expect(user.errors[:password]).to include("is too short (minimum is 8 characters)")
     end
 
     it "is invalid with a confirmation mismatch" do
@@ -49,8 +49,7 @@ describe User do
     end
 
     it "is invalid with an empty password" do
-      @user.password = ""
-      @user.password_confirmation = ""
+      @user.password_digest = ""
       @user.valid?
       expect(@user.errors[:password]).to include("can't be blank")
     end
