@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe OrdersController do
+  before :each do
+    user = create(:user)
+    session[:user_id] = user.id
+  end
 
   let(:valid_session) { {} }
 
