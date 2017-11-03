@@ -8,7 +8,7 @@ describe OrderMailer do
     it "sends confirmation email when order is received" do
       expect(mail.subject).to eq("Go Food Order Confirmation")
       expect(mail.to).to eq([order.email])
-      expect(mail.from).to eq([goscholar@mail.com])
+      expect(mail.from).to eq([go.scholarship.kolla@mail.com])
     end
   end
 
@@ -19,7 +19,7 @@ describe OrderMailer do
     it "sends confirmation email when order is shipped" do
       expect(mail.subject).to eq("Go Food Order Shipped")
       expect(mail.to).to eq([order.email])
-      expect(mail.from).to eq([goscholar@mail.com])
+      expect(mail.from).to eq([go.scholarship.kolla@mail.com])
     end
   end
 end
