@@ -1,0 +1,662 @@
+/* line 6, /home/nanda/go-food/app/assets/stylesheets/carts.scss */
+.carts .item_price, .carts .total_line, #side #cart .item_price, #side #cart .total_line {
+  text-align: right;
+}
+/* line 10, /home/nanda/go-food/app/assets/stylesheets/carts.scss */
+.carts .total_line, .carts .total_cell, #side #cart .total_line, #side #cart .total_cell {
+  font-weight: bold;
+  border-top: 1px solid #595;
+}
+/* line 5, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store, .categories {
+  /* An entry in our store catalogue */
+}
+/* line 6, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store h1, .categories h1 {
+  margin: 0;
+  padding-bottom: 0.5em;
+  font: 150% sans-serif;
+  color: #226;
+  border-bottom: 3px dotted #77d;
+}
+/* line 15, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry, .categories .entry {
+  overflow: auto;
+  margin-top: 1em;
+  border-bottom: 1px dotted #77d;
+  min-height: 100px;
+}
+/* line 21, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry img, .categories .entry img {
+  width: 80px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  position: absolute;
+}
+/* line 28, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry h3, .categories .entry h3 {
+  font-size: 120%;
+  font-family: sans-serif;
+  margin-left: 100px;
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #227;
+}
+/* line 37, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry p, .categories .entry p, .store .entry div.price_line, .categories .entry div.price_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+/* line 43, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry .price, .categories .entry .price {
+  color: #44a;
+  font-weight: bold;
+  margin-right: 3em;
+}
+/* line 49, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry p, .categories .entry p, .store .entry div.price_line, .categories .entry div.price_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 54, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry p form, .categories .entry p form, .store .entry p div, .categories .entry p div, .store .entry div.price_line form, .categories .entry div.price_line form, .store .entry div.price_line div, .categories .entry div.price_line div {
+  display: inline;
+}
+/* line 2, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master table {
+  border-collapse: collapse;
+}
+/* line 6, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master table tr {
+  border: solid #fff;
+}
+/* line 9, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master table tr td {
+  padding: 5px;
+  vertical-align: top;
+}
+/* line 14, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_image {
+  width: 60px;
+  height: 60px;
+}
+/* line 19, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description {
+  width: 400px;
+}
+/* line 22, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description dl {
+  margin: 0;
+}
+/* line 26, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description dt {
+  color: #244;
+  font-weight: bold;
+  font-size: larger;
+}
+/* line 32, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description dd {
+  margin: 0;
+}
+/* line 37, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_action {
+  font-size: x-small;
+  font-align: right;
+  padding-left: 1em;
+}
+/* line 43, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_line_even {
+  background: #FF7F00;
+}
+/* line 47, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_line_odd {
+  background: #D2691E;
+}
+
+/* line 52, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+body, body > p, body > ol, body > ul, body > td {
+  margin: 8px !important;
+}
+
+/* line 54, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#banner {
+  position: relative;
+  min-height: 40px;
+  background: white;
+  padding: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #282;
+  text-align: center;
+}
+/* line 64, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 192px;
+}
+
+/* line 73, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#notice:empty {
+  display: none;
+}
+
+/* line 77, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns {
+  background: #9c9;
+  display: flex;
+}
+/* line 81, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #main {
+  padding: 1em;
+  background: white;
+  flex: 1;
+}
+/* line 87, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side {
+  padding: 1em 2em;
+  background: #141;
+}
+/* line 91, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side form, #columns #side div {
+  display: inline;
+}
+/* line 95, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side input {
+  font-size: small;
+}
+/* line 99, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side #cart {
+  font-size: smaller;
+  color: white;
+}
+/* line 103, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side #cart table {
+  border-top: 1px dotted #595;
+  border-bottom: 1px dotted #595;
+  margin-bottom: 10px;
+}
+/* line 110, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side ul {
+  padding: 0;
+}
+/* line 113, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side ul li {
+  list-style: none;
+}
+/* line 116, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side ul li a {
+  color: #141;
+  font-size: small;
+}
+
+/* line 126, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+p, div.tags_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+/* line 132, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.tags {
+  background-color: LightGrey;
+  font-size: 10px;
+}
+
+/* line 139, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form fieldset {
+  background: #efe;
+}
+/* line 141, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form fieldset legend {
+  color: #dfd;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em 1em;
+}
+/* line 148, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form fieldset div {
+  margin-bottom: 0.3em;
+}
+/* line 154, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form label {
+  width: 5em;
+  float: left;
+  text-align: right;
+  padding-top: 0.2em;
+  margin-right: 0.1em;
+  display: block;
+}
+/* line 163, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form select, .go_food_form form textarea, .go_food_form form input {
+  margin-left: 0.5em;
+}
+/* line 167, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form .submit {
+  margin-left: 4em;
+}
+/* line 171, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form br {
+  display: none;
+}
+
+@media all and (max-width: 800px) {
+  /* line 179, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+  #columns {
+    flex-direction: column-reverse;
+  }
+}
+@media all and (max-width: 500px) {
+  /* line 185, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+  #banner {
+    height: 1em;
+  }
+
+  /* line 189, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+  #banner .title {
+    display: none;
+  }
+}
+/* line 2, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form fieldset {
+  background: #efe;
+}
+/* line 4, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form fieldset legend {
+  color: #dfd;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em 1em;
+}
+/* line 11, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form fieldset div {
+  margin-bottom: 0.3em;
+}
+/* line 17, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form form label {
+  width: 5em;
+  float: left;
+  text-align: right;
+  padding-top: 0.2em;
+  margin-right: 0.1em;
+  display: block;
+}
+/* line 26, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form form select, .go_food_form form textarea, .go_food_form form input {
+  margin-left: 0.5em;
+}
+/* line 30, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form form .submit {
+  margin-left: 4em;
+}
+/* line 34, /home/nanda/go-food/app/assets/stylesheets/orders.scss */
+.go_food_form form br {
+  display: none;
+}
+/* line 2, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master table, .foods table, .buyers table, .categories table, .orders table {
+  border-collapse: collapse;
+}
+/* line 6, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master table tr, .foods table tr, .buyers table tr, .categories table tr, .orders table tr {
+  border: solid #fff;
+}
+/* line 9, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master table tr td, .foods table tr td, .buyers table tr td, .categories table tr td, .orders table tr td {
+  padding: 5px;
+  vertical-align: top;
+}
+/* line 14, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_image, .foods .list_image, .buyers .list_image, .categories .list_image, .orders .list_image {
+  width: 60px;
+  height: 60px;
+}
+/* line 19, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description, .foods .list_description, .buyers .list_description, .categories .list_description, .orders .list_description {
+  width: 400px;
+}
+/* line 22, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description dl, .foods .list_description dl, .buyers .list_description dl, .categories .list_description dl, .orders .list_description dl {
+  margin: 0;
+}
+/* line 26, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description dt, .foods .list_description dt, .buyers .list_description dt, .categories .list_description dt, .orders .list_description dt {
+  color: #244;
+  font-weight: bold;
+  font-size: larger;
+}
+/* line 32, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_description dd, .foods .list_description dd, .buyers .list_description dd, .categories .list_description dd, .orders .list_description dd {
+  margin: 0;
+}
+/* line 37, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_action, .foods .list_action, .buyers .list_action, .categories .list_action, .orders .list_action {
+  font-size: x-small;
+  font-align: right;
+  padding-left: 1em;
+}
+/* line 43, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_line_even, .foods .list_line_even, .buyers .list_line_even, .categories .list_line_even, .orders .list_line_even {
+  background: #FF7F00;
+}
+/* line 47, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.master .list_line_odd, .foods .list_line_odd, .buyers .list_line_odd, .categories .list_line_odd, .orders .list_line_odd {
+  background: #D2691E;
+}
+
+/* line 52, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+body, body > p, body > ol, body > ul, body > td {
+  margin: 8px !important;
+}
+
+/* line 54, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#banner {
+  position: relative;
+  min-height: 40px;
+  background: white;
+  padding: 10px;
+  border-bottom: 2px solid;
+  font: small-caps 40px/40px "Times New Roman", serif;
+  color: #282;
+  text-align: center;
+}
+/* line 64, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 192px;
+}
+
+/* line 73, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#notice:empty {
+  display: none;
+}
+
+/* line 77, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns {
+  background: #9c9;
+  display: flex;
+}
+/* line 81, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #main {
+  padding: 1em;
+  background: white;
+  flex: 1;
+}
+/* line 87, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side {
+  padding: 1em 2em;
+  background: #141;
+}
+/* line 91, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side form, #columns #side div {
+  display: inline;
+}
+/* line 95, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side input {
+  font-size: small;
+}
+/* line 99, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side #cart {
+  font-size: smaller;
+  color: white;
+}
+/* line 103, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side #cart table {
+  border-top: 1px dotted #595;
+  border-bottom: 1px dotted #595;
+  margin-bottom: 10px;
+}
+/* line 110, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side ul {
+  padding: 0;
+}
+/* line 113, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side ul li {
+  list-style: none;
+}
+/* line 116, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+#columns #side ul li a {
+  color: #141;
+  font-size: small;
+}
+
+/* line 126, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+p, div.tags_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+
+/* line 132, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.tags {
+  background-color: LightGrey;
+  font-size: 10px;
+}
+
+/* line 139, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form fieldset {
+  background: #efe;
+}
+/* line 141, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form fieldset legend {
+  color: #dfd;
+  background: #141;
+  font-family: sans-serif;
+  padding: 0.2em 1em;
+}
+/* line 148, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form fieldset div {
+  margin-bottom: 0.3em;
+}
+/* line 154, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form label {
+  width: 5em;
+  float: left;
+  text-align: right;
+  padding-top: 0.2em;
+  margin-right: 0.1em;
+  display: block;
+}
+/* line 163, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form select, .go_food_form form textarea, .go_food_form form input {
+  margin-left: 0.5em;
+}
+/* line 167, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form .submit {
+  margin-left: 4em;
+}
+/* line 171, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+.go_food_form form br {
+  display: none;
+}
+
+@media all and (max-width: 800px) {
+  /* line 179, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+  #columns {
+    flex-direction: column-reverse;
+  }
+}
+@media all and (max-width: 500px) {
+  /* line 185, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+  #banner {
+    height: 1em;
+  }
+
+  /* line 189, /home/nanda/go-food/app/assets/stylesheets/master.scss */
+  #banner .title {
+    display: none;
+  }
+}
+/* line 3, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 12, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 18, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 24, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 27, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 31, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 37, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+th {
+  padding-bottom: 5px;
+}
+
+/* line 41, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+td {
+  padding: 0 5px 7px;
+}
+
+/* line 46, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 51, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 55, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 61, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 68, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 78, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 84, /home/nanda/go-food/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
+/* line 5, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store {
+  /* An entry in our store catalogue */
+}
+/* line 6, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store h1 {
+  margin: 0;
+  padding-bottom: 0.5em;
+  font: 150% sans-serif;
+  color: #226;
+  border-bottom: 3px dotted #77d;
+}
+/* line 15, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry {
+  overflow: auto;
+  margin-top: 1em;
+  border-bottom: 1px dotted #77d;
+  min-height: 100px;
+}
+/* line 21, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry img {
+  width: 80px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  position: absolute;
+}
+/* line 28, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry h3 {
+  font-size: 120%;
+  font-family: sans-serif;
+  margin-left: 100px;
+  margin-top: 0;
+  margin-bottom: 2px;
+  color: #227;
+}
+/* line 37, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry p, .store .entry div.price_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.8em;
+}
+/* line 43, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry .price {
+  color: #44a;
+  font-weight: bold;
+  margin-right: 3em;
+}
+/* line 49, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry p, .store .entry div.price_line {
+  margin-left: 100px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+/* line 54, /home/nanda/go-food/app/assets/stylesheets/store.scss */
+.store .entry p form, .store .entry p div, .store .entry div.price_line form, .store .entry div.price_line div {
+  display: inline;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
