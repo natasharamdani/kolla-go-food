@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe OrdersController do
+  before :each do
+    user = create(:user)
+    session[:user_id] = user.id
+  end
 
   let(:valid_session) { {} }
 
@@ -114,6 +118,12 @@ describe OrdersController do
       it "redirects to store#index" do
         post :create, params: { order: attributes_for(:order) }
         expect(response).to redirect_to(store_index_path)
+      end
+
+      it "sends order confirmation email" do
+        expect{
+          post :create, params: { order: attributes_for(:order) }
+        }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
     end
 

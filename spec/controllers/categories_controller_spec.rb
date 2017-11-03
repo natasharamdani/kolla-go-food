@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe CategoriesController do
+  before :each do
+    user = create(:user)
+    session[:user_id] = user.id
+  end
+
   describe "GET #index" do
     it "returns http success" do
       get :index
