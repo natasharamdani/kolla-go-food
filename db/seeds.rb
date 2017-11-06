@@ -78,3 +78,23 @@ User.create!(
   username: "nanda",
   password: "12345678"
 )
+
+Voucher.delete_all
+
+Voucher.create!(
+  code: "DISKON"
+  valid_from: "2017-11-01"
+  valid_through: "2017-11-30"
+  amount: 25
+  unit: "percent"
+  max_amount: 10000
+)
+
+Voucher.create!(
+  code: "HEMAT"
+  valid_from: "2017-11-01"
+  valid_through: "2017-11-30"
+  amount: 10000
+  unit: "rupiah"
+  max_amount: 10000
+)
