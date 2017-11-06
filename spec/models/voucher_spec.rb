@@ -58,13 +58,13 @@ describe Voucher do
   it "is invalid with a non date valid_from" do
     voucher = build(:voucher, valid_from: "valid_from")
     voucher.valid?
-    expect(voucher.errors[:valid_from]).to include("is not a date")
+    expect(voucher.errors[:valid_from]).to include("must be in yyyy-mm-dd format")
   end
 
   it "is invalid with a non date valid_through" do
     voucher = build(:voucher, valid_through: "valid_through")
     voucher.valid?
-    expect(voucher.errors[:valid_through]).to include("is not a date")
+    expect(voucher.errors[:valid_through]).to include("must be in yyyy-mm-dd format")
   end
 
   it "is invalid with a non numeric amount" do
@@ -76,7 +76,7 @@ describe Voucher do
   it "is invalid with wrong unit" do
     voucher = build(:voucher, unit: "unit")
     voucher.valid?
-    expect(voucher.errors[:unit]).to include("must be a valid unit")
+    expect(voucher.errors[:unit]).to include('must be a valid unit ("percent" or "rupiah")')
   end
 
   it "is invalid with a non numeric max_amount" do
