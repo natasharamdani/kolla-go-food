@@ -46,21 +46,21 @@ Food.create!(
   category_id: 1
 )
 
-Buyer.delete_all
+# Buyer.delete_all
 
-Buyer.create!(
-  email: "nanda@gmail.com",
-  name: "nanda",
-  phone: "021",
-  address: "depok"
-)
+# Buyer.create!(
+#   email: "nanda@gmail.com",
+#   name: "nanda",
+#   phone: "021",
+#   address: "depok"
+# )
 
-Buyer.create!(
-  email: "ajeng@ymail.com",
-  name: "ajeng",
-  phone: "123",
-  address: "bogor"
-)
+# Buyer.create!(
+#   email: "ajeng@ymail.com",
+#   name: "ajeng",
+#   phone: "123",
+#   address: "bogor"
+# )
 
 Category.delete_all
 
@@ -70,4 +70,11 @@ Category.create!(
 
 Category.create!(
   name: "Khas Betawi"
+)
+
+User.delete_all
+
+User.create!(
+  username: "nanda",
+  password: "12345678"
 )
