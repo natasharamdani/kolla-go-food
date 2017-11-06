@@ -2,7 +2,7 @@
 
 <h1>Vouchers</h1>
 
-<table>
+<table style="text-align: center">
   <tr>
     <th width="80px">Code</th>
     <th width="120px">Valid from</th>
@@ -13,7 +13,7 @@
     <th></th>
   </tr>
   <% @vouchers.each do |voucher| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="text-align: center">
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td><%= voucher.code %></td>
       <td><%= voucher.valid_from %></td>
       <td><%= voucher.valid_through %></td>

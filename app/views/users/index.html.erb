@@ -2,7 +2,11 @@
 
 <h1>Users</h1>
 
-<table>
+<table style="text-align: center">
+  <tr>
+    <th width="100px">Username</th>
+    <th></th>
+  </tr>
   <% @users.each do |user| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td><%= user.username %></td>
