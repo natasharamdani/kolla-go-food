@@ -1,5 +1,6 @@
 class Voucher < ApplicationRecord
   before_save :capital_code
+  has_many :orders
 
   validates :code, :valid_from, :valid_through, :amount, :unit, :max_amount, presence: true
 

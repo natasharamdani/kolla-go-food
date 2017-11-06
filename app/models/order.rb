@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   }
 
   has_many :line_items, dependent: :destroy
+  belongs_to :voucher, optional: true
 
   validates :name, :address, :email, :payment_type, presence: true
   validates :email, format: {

@@ -10,6 +10,7 @@
    <th width="100px">Email</th>
    <th width="120px">Payment Type</th>
    <th width="180px">Total Price</th>
+   <th width="100px">Voucher</th>
  </tr>
   <% @orders.each do |order| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" align="center">
@@ -21,6 +22,7 @@
       <td><%= order.email %></td>
       <td><%= order.payment_type %></td>
       <td><%= number_to_currency(order.total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+      <td><%= order.voucher.try(:code) %></td>
     </tr>
   <% end %>
 </table>
