@@ -49,12 +49,6 @@ describe Voucher do
     expect(voucher2.errors[:code]).to include("has already been taken")
   end
 
-  it "is invalid with a code other than given format" do
-    voucher = build(:voucher, code: "code")
-    voucher.valid?
-    expect(voucher.errors[:code]).to include("must be a capital string")
-  end
-
   it "is invalid with a non date valid_from" do
     voucher = build(:voucher, valid_from: "valid_from")
     voucher.valid?

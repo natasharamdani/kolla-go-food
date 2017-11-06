@@ -3,9 +3,23 @@
 <h1>Vouchers</h1>
 
 <table>
+  <tr>
+    <th width="80px">Code</th>
+    <th width="120px">Valid from</th>
+    <th width="120px">Valid through</th>
+    <th width="100px">Amount</th>
+    <th width="80px">Unit</th>
+    <th width="100px">Max amount</th>
+    <th></th>
+  </tr>
   <% @vouchers.each do |voucher| %>
-    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td><%= voucher.vouchername %></td>
+    <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="text-align: center">
+      <td><%= voucher.code %></td>
+      <td><%= voucher.valid_from %></td>
+      <td><%= voucher.valid_through %></td>
+      <td><%= voucher.amount %></td>
+      <td><%= voucher.unit %></td>
+      <td><%= voucher.max_amount %></td>
       <td class="list_action">
         <%= link_to 'Show', voucher %>
         <%= link_to 'Edit', edit_voucher_path(voucher) %>
