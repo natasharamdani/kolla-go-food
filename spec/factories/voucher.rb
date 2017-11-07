@@ -5,7 +5,7 @@ FactoryGirl.define do
     valid_through { Faker::Date.forward(30) }
     amount { Faker::Number.between(1, 100) }
     unit "percent"
-    max_amount { Faker::Commerce.price }
+    max_amount { Faker::Number.between(101, 1000) }
   end
 
   factory :invalid_voucher, parent: :voucher do
