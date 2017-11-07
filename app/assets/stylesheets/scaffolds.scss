@@ -85,6 +85,6 @@ label {
   display: block;
 }
 
-.foods, .buyers, .categories, .orders {
+.foods, .buyers, .categories, .orders, .vouchers {
   @extend .master;
 }

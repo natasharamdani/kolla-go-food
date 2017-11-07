@@ -2,16 +2,15 @@
 
 <h1>Orders</h1>
 
-<br>
-
-<table>
+<table style="text-align: center">
   <tr>
    <th width="40px">ID</th>
    <th width="100px">Name</th>
    <th width="100px">Address</th>
    <th width="100px">Email</th>
    <th width="120px">Payment Type</th>
-   <th width="180px">Total Price</th>
+   <th width="180px">Price</th>
+   <th width="100px">Voucher</th>
  </tr>
   <% @orders.each do |order| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" align="center">
@@ -22,7 +21,8 @@
       <td><%= order.address %></td>
       <td><%= order.email %></td>
       <td><%= order.payment_type %></td>
-      <td><%= number_to_currency(order.total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+      <td><%= number_to_currency(order.final_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+      <td><%= order.voucher.try(:code) %></td>
     </tr>
   <% end %>
 </table>

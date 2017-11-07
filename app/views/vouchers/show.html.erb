@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<strong>Code:</strong>
+<%= @voucher.code %>
+<br>
+<strong>Valid from:</strong>
+<%= @voucher.valid_from %>
+<br>
+<strong>Valid through:</strong>
+<%= @voucher.valid_through %>
+<br>
+<strong>Amount:</strong>
+<%= @voucher.amount %>
+<br>
+<strong>Unit:</strong>
+<%= @voucher.unit %>
+<br>
+<strong>Max amount:</strong>
+<%= @voucher.max_amount %>
+
+<br><br>
+
+<%= link_to 'Edit', edit_voucher_path(@voucher) %> |
+<%= link_to 'Back', vouchers_path %>

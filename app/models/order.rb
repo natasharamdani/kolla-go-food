@@ -6,6 +6,7 @@ class Order < ApplicationRecord
   }
 
   has_many :line_items, dependent: :destroy
+  belongs_to :voucher, optional: true
 
   validates :name, :address, :email, :payment_type, presence: true
   validates :email, format: {
@@ -27,5 +28,25 @@ class Order < ApplicationRecord
       total_price += item.total_price
     end
     total_price
+  end
+
+  def discount
+    discount = 0
+
+    if voucher.unit == "Percent"
+      discount = voucher.amount / 100 * total_price
+    elsif voucher.unit == "Rupiah"
+      discount = voucher.amount
+    end
+
+    if voucher.max_amount != nil && voucher.max_amount < discount
+      discount = voucher.max_amount
+    end
+
+    discount
+  end
+
+  def final_price
+    total_price - discount
   end
 end

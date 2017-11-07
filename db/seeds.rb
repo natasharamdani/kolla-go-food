@@ -46,21 +46,21 @@ Food.create!(
   category_id: 1
 )
 
-Buyer.delete_all
+# Buyer.delete_all
 
-Buyer.create!(
-  email: "nanda@gmail.com",
-  name: "nanda",
-  phone: "021",
-  address: "depok"
-)
+# Buyer.create!(
+#   email: "nanda@gmail.com",
+#   name: "nanda",
+#   phone: "021",
+#   address: "depok"
+# )
 
-Buyer.create!(
-  email: "ajeng@ymail.com",
-  name: "ajeng",
-  phone: "123",
-  address: "bogor"
-)
+# Buyer.create!(
+#   email: "ajeng@ymail.com",
+#   name: "ajeng",
+#   phone: "123",
+#   address: "bogor"
+# )
 
 Category.delete_all
 
@@ -70,4 +70,31 @@ Category.create!(
 
 Category.create!(
   name: "Khas Betawi"
+)
+
+User.delete_all
+
+User.create!(
+  username: "nanda",
+  password: "12345678"
+)
+
+Voucher.delete_all
+
+Voucher.create!(
+  code: "DISKON",
+  valid_from: "2017-11-01",
+  valid_through: "2017-11-30",
+  amount: 25,
+  unit: "percent",
+  max_amount: 10000
+)
+
+Voucher.create!(
+  code: "HEMAT",
+  valid_from: "2017-11-01",
+  valid_through: "2017-11-30",
+  amount: 10000,
+  unit: "rupiah",
+  max_amount: 10000
 )
