@@ -4,7 +4,7 @@ FactoryGirl.define do
     valid_from { Faker::Date.backward(30) }
     valid_through { Faker::Date.forward(30) }
     amount { Faker::Number.between(1, 100) }
-    unit "percent"
+    unit "Percent"
     max_amount { Faker::Number.between(101, 1000) }
   end
 

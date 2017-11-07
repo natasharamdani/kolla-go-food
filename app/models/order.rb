@@ -27,21 +27,26 @@ class Order < ApplicationRecord
     line_items.each do |item|
       total_price += item.total_price
     end
-
-    discount_price(total_price, order.voucher.amount, order.voucher.unit, order.voucher.max_amount)
+    total_price
   end
 
-  def discount_price(total_price, amount, unit, max_amount)
-    if unit == "percent"
-      discount_price = total_price - ((total_price * amount) / 100)
-    else
-      discount_price = total_price - amount
+  def discount
+    discount = 0
+
+    if voucher.unit == "Percent"
+      discount = voucher.amount / 100 * total_price
+    elsif voucher.unit == "Rupiah"
+      discount = voucher.amount
     end
 
-    if max_amount != nil && max_amount < discount
-      discount_price = max_amount
+    if voucher.max_amount != nil && voucher.max_amount < discount
+      discount = voucher.max_amount
     end
 
-    discount_price
+    discount
+  end
+
+  def final_price
+    total_price - discount
   end
 end

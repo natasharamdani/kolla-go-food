@@ -20,6 +20,18 @@ class Voucher < ApplicationRecord
   validate :valid_through_must_be_greater_than_valid_from
   validate :max_amount_must_be_greater_than_or_equal_to_amount_with_rupiah_unit
 
+  # validates_each :valid_through do |record, attr, value|
+  #   if !value.nil? && !record.valid_from.nil?
+  #     record.errors.add(attr, "valid_from must be less than valid_through") if value < record.valid_from
+  #   end
+  # end
+
+  # validates_each :max_amount do |record, attr, value|
+  #   if record.unit == "Rupiah"
+  #     record.errors.add(attr, "must be greater than or equal to amount") if value < record.amount
+  #   end
+  # end
+
   private
 
   def capital_code

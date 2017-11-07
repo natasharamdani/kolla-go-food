@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe Order do
-  it "has a valid factory" do
-    expect(build(:order)).to be_valid
-  end
-
   it "is valid with a name, address, email, and payment_type" do
     expect(build(:order)).to be_valid
   end
@@ -74,5 +70,36 @@ describe Order do
     line_item2 = create(:line_item, order: order, food: food2, quantity: 2)
 
     expect(order.total_price).to eq(50000)
+  end
+
+  describe "adding voucher to order" do
+    context "with valid voucher" do
+      before :each do
+        @food = create(:food, price: 100000)
+      end
+
+      it "can calculate price_after_discount with percent as unit" do
+        voucher = create(:voucher, amount: 25, unit: "Percent", max_amount: 15000)
+        order = create(:order, voucher: voucher)
+        line_item = create(:line_item, order: order, food: @food)
+        expect(order.final_price).to eq(85000)
+      end
+
+      it "can calculate price_after_discount with rupiah as unit" do
+        voucher = create(:voucher, amount: 15000, unit: "Rupiah", max_amount: 15000)
+        order = create(:order, voucher: voucher)
+        line_item = create(:line_item, order: order, food: @food)
+        expect(order.final_price).to eq(85000)
+      end
+    end
+
+    context "with invalid voucher" do
+      it "is invalid with invalid voucher" do
+        voucher = create(:voucher, valid_through: 1.day.ago)
+        order = create(:order, voucher: voucher)
+        order.valid?
+        expect(order.errors[:base]).to include("must use valid voucher")
+      end
+    end
   end
 end
