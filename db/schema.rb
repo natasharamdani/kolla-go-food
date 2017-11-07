@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20171106093810) do
 
   create_table "vouchers", force: :cascade do |t|
     t.string "code"
-    t.string "valid_from"
-    t.string "valid_through"
+    t.date "valid_from"
+    t.date "valid_through"
     t.decimal "amount"
     t.string "unit"
     t.decimal "max_amount"
