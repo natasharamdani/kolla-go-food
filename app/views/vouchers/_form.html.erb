@@ -36,7 +36,7 @@
 
     <div class="field">
       <%= form.label :unit %>
-      <%= form.text_field :unit %>
+      <%= form.select :unit, Voucher.units.keys, prompt: 'Select unit' %>
     </div>
 
     <div class="field">

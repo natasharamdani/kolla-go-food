@@ -98,14 +98,12 @@ describe Voucher do
   end
 
   it "is invalid with wrong unit" do
-    voucher = build(:voucher, unit: "unit")
-    voucher.valid?
-    expect(voucher.errors[:unit]).to include('must be a valid unit ("percent" or "rupiah")')
+    expect{ build(:voucher, unit: "dollar") }.to raise_error(ArgumentError)
   end
 
   context "with rupiah as unit" do
     it "is invalid with max_amount less than amount" do
-      voucher = build(:voucher, amount: "10000", unit: "rupiah", max_amount: "5000")
+      voucher = build(:voucher, amount: "10000", unit: "Rupiah", max_amount: "5000")
       voucher.valid?
       expect(voucher.errors[:max_amount]).to include("must be greater than or equal to amount")
     end
