@@ -98,3 +98,13 @@ Voucher.create!(
   unit: "rupiah",
   max_amount: 10000
 )
+
+Tag.delete_all
+
+Tag.create!(
+  name: "Tradisional"
+)
+
+Tag.create!(
+  name: "Khas Betawi"
+)

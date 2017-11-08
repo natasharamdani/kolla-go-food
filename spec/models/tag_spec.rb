@@ -6,7 +6,7 @@ describe Tag do
   end
 
   it "is invalid without a name" do
-    tag = build(:tag, name: nil)
+    tag = build(:invalid_tag)
     tag.valid?
     expect(tag.errors[:name]).to include("can't be blank")
   end
@@ -17,13 +17,5 @@ describe Tag do
 
     tag2.valid?
     expect(tag2.errors[:name]).to include("has already been taken")
-  end
-
-  it "can't be destroyed while it has food(s)" do
-    tag = create(:tag)
-
-    food = create(:food, tag: tag)
-
-    expect { tag.destroy }.not_to change(Tag, :count)
   end
 end
