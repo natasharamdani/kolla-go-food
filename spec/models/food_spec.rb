@@ -88,11 +88,24 @@ describe Food do
     expect(food2.errors[:category]).not_to include("has already been taken")
   end
 
-  # gem 'should-matchers'
+  # gem 'shoulda-matchers'
   # describe "relations" do
-  #   it { should have_and_belong_to_many(:foods) }
-  #   it { should have_and_belong_to_many(:tags) }
+  #   # using :has_many :through
+  #   it { should have_many(:food_tags) }
+  #   it { should have_many(:tags).through(:food_tags) }
+
+  #   # or using :has_and_belongs_to_many
+  #   it { should has_and_belongs_to_many(:tags) }
   # end
+
+  it "should save_tag_ids_attributes! after_save" do
+    food = create(:food)
+    tags = create_list(:tag, 3)
+    food.tag_ids = tags.collect(&:id)
+    food.save!
+    food.reload
+    expect(food.tags.collect(&:id)).to match_array tags.collect(&:id)
+  end
 
   it "is invalid without a restaurant" do
     food = build(:food, restaurant: nil)
