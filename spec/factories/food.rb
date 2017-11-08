@@ -6,6 +6,7 @@ FactoryGirl.define do
     association :category
     tag_ids {[]}
     association :restaurant
+    association :review
   end
 
   factory :invalid_food, parent: :food do
