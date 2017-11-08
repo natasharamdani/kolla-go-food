@@ -11,6 +11,7 @@ class Food < ApplicationRecord
   belongs_to :category, optional: true
   has_and_belongs_to_many :tags, optional: true
   belongs_to :restaurant
+  belongs_to :review
 
   before_destroy :ensure_not_referenced_by_any_line_item
 

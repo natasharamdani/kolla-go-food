@@ -1,7 +1,9 @@
 class Restaurant < ApplicationRecord
   validates :name, :address, presence: true
   validates :name, uniqueness: true
+
   has_many :foods
+  belongs_to :review
 
   before_destroy :ensure_not_referenced_by_any_food
 
