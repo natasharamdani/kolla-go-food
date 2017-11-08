@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108035836) do
+ActiveRecord::Schema.define(version: 20171108063047) do
 
   create_table "buyers", force: :cascade do |t|
     t.string "email"
@@ -65,6 +65,11 @@ ActiveRecord::Schema.define(version: 20171108035836) do
     t.datetime "updated_at", null: false
     t.integer "voucher_id"
     t.index ["voucher_id"], name: "index_orders_on_voucher_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.text "address"
   end
 
   create_table "tags", force: :cascade do |t|

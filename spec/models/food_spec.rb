@@ -85,6 +85,12 @@ describe Food do
     food2 = build(:food, category: category)
 
     food2.valid?
-    expect(food2.errors[:name]).not_to include("has already been taken")
+    expect(food2.errors[:category]).not_to include("has already been taken")
   end
+
+  # gem 'should-matchers'
+  # describe "relations" do
+  #   it { should have_and_belong_to_many(:foods) }
+  #   it { should have_and_belong_to_many(:tags) }
+  # end
 end

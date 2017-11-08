@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :tag do
-    # name { Faker::Dessert.variety }
     sequence :name do |n|
       "tag#{n}"
     end

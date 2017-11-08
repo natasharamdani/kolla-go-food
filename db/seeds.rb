@@ -108,3 +108,15 @@ Tag.create!(
 Tag.create!(
   name: "Khas Betawi"
 )
+
+Restaurant.delete_all
+
+Restaurant.create!(
+  name: "Food Court",
+  address: "Margonda"
+)
+
+Restaurant.create!(
+  name: "RM Betawi",
+  address: "Setu Babakan"
+)
