@@ -76,7 +76,7 @@ describe Food do
   it "is valid without a category" do
     food = build(:food, category: nil)
 
-    expect(build(:food)).to be_valid
+    expect(food).to be_valid
   end
 
   it "is valid with a duplicate category" do
@@ -93,4 +93,19 @@ describe Food do
   #   it { should have_and_belong_to_many(:foods) }
   #   it { should have_and_belong_to_many(:tags) }
   # end
+
+  it "is invalid without a restaurant" do
+    food = build(:food, restaurant: nil)
+
+    expect(food).not_to be_valid
+  end
+
+  it "is valid with a duplicate restaurant" do
+    restaurant = create(:restaurant)
+    food1 = create(:food, restaurant: restaurant)
+    food2 = build(:food, restaurant: restaurant)
+
+    food2.valid?
+    expect(food2.errors[:restaurant]).not_to include("has already been taken")
+  end
 end
