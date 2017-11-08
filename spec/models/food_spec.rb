@@ -76,7 +76,7 @@ describe Food do
   it "is valid without a category" do
     food = build(:food, category: nil)
 
-    expect(build(:food)).to be_valid
+    expect(food).to be_valid
   end
 
   it "is valid with a duplicate category" do
@@ -85,6 +85,40 @@ describe Food do
     food2 = build(:food, category: category)
 
     food2.valid?
-    expect(food2.errors[:name]).not_to include("has already been taken")
+    expect(food2.errors[:category]).not_to include("has already been taken")
+  end
+
+  # gem 'shoulda-matchers'
+  # describe "relations" do
+  #   # using :has_many :through
+  #   it { should have_many(:food_tags) }
+  #   it { should have_many(:tags).through(:food_tags) }
+
+  #   # or using :has_and_belongs_to_many
+  #   it { should has_and_belongs_to_many(:tags) }
+  # end
+
+  it "should save_tag_ids_attributes! after_save" do
+    food = create(:food)
+    tags = create_list(:tag, 3)
+    food.tag_ids = tags.collect(&:id)
+    food.save!
+    food.reload
+    expect(food.tags.collect(&:id)).to match_array tags.collect(&:id)
+  end
+
+  it "is invalid without a restaurant" do
+    food = build(:food, restaurant: nil)
+
+    expect(food).not_to be_valid
+  end
+
+  it "is valid with a duplicate restaurant" do
+    restaurant = create(:restaurant)
+    food1 = create(:food, restaurant: restaurant)
+    food2 = build(:food, restaurant: restaurant)
+
+    food2.valid?
+    expect(food2.errors[:restaurant]).not_to include("has already been taken")
   end
 end

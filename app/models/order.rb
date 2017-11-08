@@ -14,6 +14,7 @@ class Order < ApplicationRecord
     message: 'must be a valid email address'
   }
   validates :payment_type, inclusion: payment_types.keys
+  validate :check_voucher
 
   def add_line_items(cart)
     cart.line_items.each do |item|
@@ -49,4 +50,11 @@ class Order < ApplicationRecord
   def final_price
     total_price - discount
   end
+
+  private
+    def check_voucher
+      if voucher.present? && (voucher.valid_from > Date.today || voucher.valid_through < Date.today)
+        errors.add(:base, 'must use valid voucher')
+      end
+    end
 end

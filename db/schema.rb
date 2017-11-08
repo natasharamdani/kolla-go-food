@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106093810) do
+ActiveRecord::Schema.define(version: 20171108091000) do
 
   create_table "buyers", force: :cascade do |t|
     t.string "email"
@@ -38,7 +38,16 @@ ActiveRecord::Schema.define(version: 20171106093810) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.integer "restaurant_id"
+    t.integer "review_id"
     t.index ["category_id"], name: "index_foods_on_category_id"
+    t.index ["restaurant_id"], name: "index_foods_on_restaurant_id"
+    t.index ["review_id"], name: "index_foods_on_review_id"
+  end
+
+  create_table "foods_tags", force: :cascade do |t|
+    t.integer "food_id"
+    t.integer "tag_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -62,6 +71,23 @@ ActiveRecord::Schema.define(version: 20171106093810) do
     t.index ["voucher_id"], name: "index_orders_on_voucher_id"
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.text "address"
+    t.integer "review_id"
+    t.index ["review_id"], name: "index_restaurants_on_review_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer"
+    t.string "title"
+    t.text "description"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -71,8 +97,8 @@ ActiveRecord::Schema.define(version: 20171106093810) do
 
   create_table "vouchers", force: :cascade do |t|
     t.string "code"
-    t.string "valid_from"
-    t.string "valid_through"
+    t.date "valid_from"
+    t.date "valid_through"
     t.decimal "amount"
     t.string "unit"
     t.decimal "max_amount"

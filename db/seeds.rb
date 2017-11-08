@@ -6,13 +6,26 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Restaurant.delete_all
+
+Restaurant.create!(
+  name: "Food Court",
+  address: "Margonda"
+)
+
+Restaurant.create!(
+  name: "RM Betawi",
+  address: "Setu Babakan"
+)
+
 Food.delete_all
 
 Food.create!(
   name: "Dimsum",
   description: "Isi ayam, udang, dan jamur.",
   image_url: "Dimsum.jpg",
-  price: 30000.00
+  price: 30000.00,
+  restaurant_id: 1
 )
 
 Food.create!(
@@ -20,14 +33,16 @@ Food.create!(
   description: "Sudah termasuk tahu dan telur rebus.",
   image_url: "Siomay.jpg",
   price: 20000.00,
-  category_id: 1
+  category_id: 1,
+  restaurant_id: 1
 )
 
 Food.create!(
   name: "Batagor",
   description: "Nikmat dan tanpa bahan pengawet.",
   image_url: "Batagor.jpg",
-  price: 15000.00
+  price: 15000.00,
+  restaurant_id: 1
 )
 
 Food.create!(
@@ -35,7 +50,8 @@ Food.create!(
   description: "Traditional Beer from Jakarta.",
   image_url: nil,
   price: 25000.00,
-  category_id: 2
+  category_id: 2,
+  restaurant_id: 2
 )
 
 Food.create!(
@@ -43,7 +59,8 @@ Food.create!(
   description: "Betawi bread in the shape of crocodile.",
   image_url: nil,
   price: 5000.00,
-  category_id: 1
+  category_id: 1,
+  restaurant_id: 2
 )
 
 # Buyer.delete_all
@@ -97,4 +114,14 @@ Voucher.create!(
   amount: 10000,
   unit: "rupiah",
   max_amount: 10000
+)
+
+Tag.delete_all
+
+Tag.create!(
+  name: "Tradisional"
+)
+
+Tag.create!(
+  name: "Khas Betawi"
 )

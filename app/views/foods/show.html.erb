@@ -12,7 +12,19 @@
 
 <p>
   <strong>Category:</strong>
-  <%= @food.category.name %>
+  <%= @food.category.name unless @food.category.blank? %>
+</p>
+
+<p>
+  <strong>Tag:</strong>
+  <% @food.tags.each do |tag| %>
+    <%= tag.name %>,
+  <% end %>
+</p>
+
+<p>
+  <strong>Restaurant:</strong>
+  <%= @food.restaurant.name %>
 </p>
 
 <p>

@@ -6,7 +6,7 @@ describe Category do
   end
 
   it "is invalid without a name" do
-    category = build(:category, name: nil)
+    category = build(:invalid_category)
     category.valid?
     expect(category.errors[:name]).to include("can't be blank")
   end

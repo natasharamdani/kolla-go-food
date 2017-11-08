@@ -23,7 +23,17 @@
 
   <div class="field">
     <%= form.label :category %>
-    <%= form.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true, id: :food_category %>
+    <%= form.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true, id: :food_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag %>
+    <%= form.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :restaurant %>
+    <%= form.collection_select :restaurant_id, Restaurant.order(:name), :id, :name, include_blank: true %>
   </div>
 
   <div class="field">
