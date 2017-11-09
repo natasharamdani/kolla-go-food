@@ -37,5 +37,12 @@
   <%= @food.price %>
 </p>
 
+<p>
+  <strong>Review:</strong>
+  Reviewer Name : <%= @food.review.reviewer unless @food.review.blank? %>
+  Title : <%= @food.review.title unless @food.review.blank? %>
+  Description : <%= @food.review.description unless @food.review.blank? %>
+</p>
+
 <%= link_to 'Edit', edit_food_path(@food) %> |
 <%= link_to 'Back', foods_path %>

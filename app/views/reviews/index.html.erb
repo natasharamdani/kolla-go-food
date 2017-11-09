@@ -1,20 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Categories</h1>
+<h1>Reviews</h1>
 
 <table>
-  <% @categories.each do |category| %>
+  <% @reviews.each do |review| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-      <td><%= category.name %></td>
-      <td>
-      	<% category.foods.each do |food| %>
-					<%= food.name %><br>
-				<% end %>
-      </td>
+      <td><%= review.reviewer %></td>
+      <td><%= review.title %></td>
+      <td><%= review.description %></td>
       <td class="list_action">
-        <%= link_to 'Show', category %><br>
-        <%= link_to 'Edit', edit_category_path(category) %><br>
-        <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Show', review %><br>
+        <%= link_to 'Edit', edit_review_path(review) %><br>
+        <%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
   <% end %>
@@ -22,4 +19,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Review', new_review_path %>

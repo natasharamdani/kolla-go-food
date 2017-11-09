@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  Name : <%= @restaurant.review.reviewer unless @restaurant.review.blank? %>
+  Title : <%= @restaurant.review.title unless @restaurant.review.blank? %>
+  Review : <%= @restaurant.review.description unless @restaurant.review.blank? %>
+</p>
+
+<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
+<%= link_to 'Back', restaurants_path %>

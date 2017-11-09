@@ -5,6 +5,6 @@ class StoreController < ApplicationController
 
   def index
     @foods = Food.order(:name)
-    @food_list = @foods.group_by { |f| f.restaurant.name }
+    @food_list = @foods.group_by { |f| f.restaurant }
   end
 end
