@@ -12,9 +12,11 @@
 
 <p>
   <strong>Review:</strong>
-  Name : <%= @restaurant.review.reviewer unless @restaurant.review.blank? %>
-  Title : <%= @restaurant.review.title unless @restaurant.review.blank? %>
-  Review : <%= @restaurant.review.description unless @restaurant.review.blank? %>
+  <% @restaurant.reviews.each do |review| %>
+  	Name: <%= review.reviewer %>,
+  	Title: <%= review.title %>,
+  	Review: <%= review.description %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |

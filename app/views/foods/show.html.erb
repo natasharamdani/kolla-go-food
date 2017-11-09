@@ -39,9 +39,11 @@
 
 <p>
   <strong>Review:</strong>
-  Reviewer Name : <%= @food.review.reviewer unless @food.review.blank? %>
-  Title : <%= @food.review.title unless @food.review.blank? %>
-  Description : <%= @food.review.description unless @food.review.blank? %>
+  <% @food.reviews.each do |review| %>
+    Name: <%= review.reviewer %>,
+    Title: <%= review.title %>,
+    Review: <%= review.description %>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_food_path(@food) %> |

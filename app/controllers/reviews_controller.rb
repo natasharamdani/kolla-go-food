@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
-  before_action :load_reviewable, only: :new
+  before_action :load_reviewable, only: [:new, :create]
 
   def index
     @reviews = Review.all
@@ -19,10 +19,11 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @review.reviewable = @reviewable
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        format.html { redirect_to [@reviewable, :reviews], notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
