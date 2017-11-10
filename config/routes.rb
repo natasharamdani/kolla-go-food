@@ -11,6 +11,14 @@ Rails.application.routes.draw do
   resources :orders
   resources :users
   resources :vouchers
+  resources :reviews
+
+  resources :foods do
+    resources :reviews
+  end
+  resources :restaurants do
+    resources :reviews
+  end
 
   controller :sessions do
     get 'login' => :new

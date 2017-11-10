@@ -3,7 +3,7 @@ class Restaurant < ApplicationRecord
   validates :name, uniqueness: true
 
   has_many :foods
-  belongs_to :review
+  has_many :reviews, as: :reviewable
 
   before_destroy :ensure_not_referenced_by_any_food
 

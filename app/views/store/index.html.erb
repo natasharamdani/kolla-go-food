@@ -3,11 +3,13 @@
 <h1>Your Food Catalog</h1>
 
 <% @food_list.each do |restaurant, foods| %>
-  <h2><%= restaurant %></h2> 
+  <h2><%= link_to restaurant.name, restaurant_path(restaurant.id) %></h2> 
+  <%= link_to 'Write Review', new_restaurant_review_path(restaurant.id) %>
   <% foods.each do |food| %>
     <div class="entry">
       <%= image_tag(food.image_url) unless food.image_url.blank? %> 
-      <h3><%= food.name %></h3>
+      <h3><%= link_to food.name, food_path(food.id) %></h3>
+      <%= link_to 'Write Review', new_food_review_path(food.id) %>
       <%= sanitize(food.description) %>
       <div class="price_line">
         <span class="price">

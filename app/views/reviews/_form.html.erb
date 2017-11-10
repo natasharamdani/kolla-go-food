@@ -1,10 +1,10 @@
-<%= form_with(model: category, local: true) do |form| %>
-  <% if category.errors.any? %>
+<%= form_with(model: [@reviewable, @review], local: true) do |form| %>
+  <% if review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-      <% category.errors.full_messages.each do |message| %>
+      <% review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,8 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :category_name %>
+    <%= form.label "Your Name" %>
+    <%= form.text_field :reviewer %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Review" %>
+    <%= form.text_area :description %>
   </div>
 
   <div class="actions">
