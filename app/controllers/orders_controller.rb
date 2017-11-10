@@ -23,6 +23,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items(@cart)
+    @order.total_price = @order.set_total_price
 
     respond_to do |format|
       if @order.save

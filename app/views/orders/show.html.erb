@@ -54,8 +54,8 @@
   <tr>
     <td></td>
     <td></td>
-    <td align="right"><strong>Total Price :</strong></td>
-    <td><%= number_to_currency(@order.total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+    <td align="right"><strong>Sub Total Price :</strong></td>
+    <td><%= number_to_currency(@order.sub_total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
   </tr>
   <tr>
     <td></td>
@@ -66,8 +66,8 @@
   <tr>
     <td></td>
     <td></td>
-    <td align="right"><strong>Final Price :</strong></td>
-    <td><%= number_to_currency(@order.final_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
+    <td align="right"><strong>Total Price :</strong></td>
+    <td><%= number_to_currency(@order.total_price, unit: "Rp", delimiter: ".", separator: ",") %></td>
   </tr>
 </table>
 

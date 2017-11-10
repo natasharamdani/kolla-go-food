@@ -24,12 +24,12 @@ class Order < ApplicationRecord
     end
   end
 
-  def total_price
-    total_price = 0
+  def sub_total_price
+    sub_total_price = 0
     line_items.each do |item|
-      total_price += item.total_price
+      sub_total_price += item.total_price
     end
-    total_price
+    sub_total_price
   end
 
   def discount
@@ -37,7 +37,7 @@ class Order < ApplicationRecord
 
     if !voucher.blank?
       if voucher.unit == "Percent"
-        discount = voucher.amount / 100 * total_price
+        discount = voucher.amount / 100 * sub_total_price
       elsif voucher.unit == "Rupiah"
         discount = voucher.amount
       end
@@ -50,8 +50,8 @@ class Order < ApplicationRecord
     discount
   end
 
-  def final_price
-    total_price - discount
+  def set_total_price
+    sub_total_price - discount
   end
 
   def self.search(name, addr, email, payment, min, max)
