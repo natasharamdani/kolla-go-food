@@ -8,10 +8,14 @@ class Restaurant < ApplicationRecord
   before_destroy :ensure_not_referenced_by_any_food
 
   def self.search(name, addr, min, max)
-    if name || desc || min || max
+    if name || addr || min || max
       min.blank? ? min = 0 : min = min.to_i
-      max = max.to_i
-      where('name LIKE ? and description LIKE ? and price >= ? and price <= ?', "%#{name}%", "%#{desc}%", min, max)
+      if max.blank?
+        where('name LIKE ? and address LIKE ? and foods.count >= ?', "%#{name}%", "%#{desc}%", min)
+      else
+        max = max.to_i
+        where('name LIKE ? and address LIKE ? and foods.count >= ? and foods.count <= ?', "%#{name}%", "%#{desc}%", min, max)
+      end
     else
       all
     end

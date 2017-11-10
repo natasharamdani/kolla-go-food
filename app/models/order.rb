@@ -52,10 +52,14 @@ class Order < ApplicationRecord
   end
 
   def self.search(name, addr, email, payment, min, max)
-    if name || desc || min || max
+    if name || addr || email || payment || min || max
       min.blank? ? min = 0 : min = min.to_i
-      max = max.to_i
-      where('name LIKE ? and description LIKE ? and price >= ? and price <= ?', "%#{name}%", "%#{desc}%", min, max)
+      if max.blank?
+        where('name LIKE ? and address LIKE ? and email LIKE ? and payment_type LIKE ? and total_price >= ?', "%#{name}%", "%#{addr}%", "%#{email}%", "%#{payment}%", min)
+      else
+        max = max.to_i
+        where('name LIKE ? and address LIKE ? and email LIKE ? and payment_type LIKE ? and total_price >= ? and total_price <= ?', "%#{name}%", "%#{addr}%", "%#{email}%", "%#{payment}%", min, max)
+      end
     else
       all
     end

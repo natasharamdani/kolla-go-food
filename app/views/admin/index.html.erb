@@ -12,7 +12,7 @@
 
 <br>
 <h3>ORDER</h3>
-<%= form_tag(foods_path, method: :get) do %>
+<%= form_tag(orders_path, method: :get) do %>
 	<%= text_field_tag :name,    params[:name],    placeholder: "Name" %>
 	<%= text_field_tag :addr,    params[:addr],    placeholder: "Address" %>
 	<%= text_field_tag :email,   params[:email],   placeholder: "Email" %>
@@ -24,7 +24,7 @@
 
 <br>
 <h3>RESTAURANT</h3>
-<%= form_tag(foods_path, method: :get) do %>
+<%= form_tag(restaurants_path, method: :get) do %>
 	<%= text_field_tag :name, params[:name], placeholder: "Name" %>
 	<%= text_field_tag :addr, params[:addr], placeholder: "Address" %>
 	<%= text_field_tag :min,  params[:min],  placeholder: "Minimum Food Count" %>
