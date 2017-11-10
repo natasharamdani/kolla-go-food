@@ -1,2 +1,9 @@
-<h1>Admin</h1>
-<p>Welcome</p>
+<h1>Search Food</h1>
+
+<%= form_tag(foods_path, method: :get) do %>
+	<%= text_field_tag :name, params[:name], placeholder: "Name" %>
+	<%= text_field_tag :desc, params[:desc], placeholder: "Description" %>
+	<%= text_field_tag :min, params[:min], placeholder: "Minimum Price" %>
+	<%= text_field_tag :max, params[:max], placeholder: "Maximum Price" %>
+	<%= submit_tag 'Search', name: nil %>
+<% end %>
