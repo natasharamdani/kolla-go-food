@@ -14,6 +14,7 @@ class Order < ApplicationRecord
     message: 'must be a valid email address'
   }
   validates :payment_type, inclusion: payment_types.keys
+  validates :total_price, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validate :check_voucher
 
   def add_line_items(cart)
@@ -34,14 +35,16 @@ class Order < ApplicationRecord
   def discount
     discount = 0
 
-    if voucher.unit == "Percent"
-      discount = voucher.amount / 100 * total_price
-    elsif voucher.unit == "Rupiah"
-      discount = voucher.amount
-    end
+    if !voucher.blank?
+      if voucher.unit == "Percent"
+        discount = voucher.amount / 100 * total_price
+      elsif voucher.unit == "Rupiah"
+        discount = voucher.amount
+      end
 
-    if voucher.max_amount != nil && voucher.max_amount < discount
-      discount = voucher.max_amount
+      if voucher.max_amount != nil && voucher.max_amount < discount
+        discount = voucher.max_amount
+      end
     end
 
     discount

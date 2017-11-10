@@ -27,7 +27,7 @@
     </tr>
     <tr>
       <td align="right"><strong>Voucher :</strong></td>
-      <td><%= @order.voucher.code do
+      <td><%= @order.voucher.try(:code) do
         
       end %></td>
     </tr>
