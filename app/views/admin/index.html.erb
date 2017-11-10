@@ -14,7 +14,7 @@
 <h3>ORDER</h3>
 <%= form_tag(foods_path, method: :get) do %>
 	<%= text_field_tag :name,    params[:name],    placeholder: "Name" %>
-	<%= text_field_tag :address, params[:address], placeholder: "Address" %>
+	<%= text_field_tag :addr,    params[:addr],    placeholder: "Address" %>
 	<%= text_field_tag :email,   params[:email],   placeholder: "Email" %>
 	<%= text_field_tag :payment, params[:payment], placeholder: "Payment Type" %>
 	<%= text_field_tag :min,     params[:min],     placeholder: "Minimum Total Price" %>
@@ -25,9 +25,9 @@
 <br>
 <h3>RESTAURANT</h3>
 <%= form_tag(foods_path, method: :get) do %>
-	<%= text_field_tag :name,    params[:name],    placeholder: "Name" %>
-	<%= text_field_tag :address, params[:address], placeholder: "Address" %>
-	<%= text_field_tag :min,     params[:min],     placeholder: "Minimum Food Count" %>
-	<%= text_field_tag :max,     params[:max],     placeholder: "Maximum Food Count" %>
+	<%= text_field_tag :name, params[:name], placeholder: "Name" %>
+	<%= text_field_tag :addr, params[:addr], placeholder: "Address" %>
+	<%= text_field_tag :min,  params[:min],  placeholder: "Minimum Food Count" %>
+	<%= text_field_tag :max,  params[:max],  placeholder: "Maximum Food Count" %>
 	<%= submit_tag 'Search Restaurant', name: nil %>
 <% end %>

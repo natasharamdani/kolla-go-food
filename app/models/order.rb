@@ -51,6 +51,16 @@ class Order < ApplicationRecord
     total_price - discount
   end
 
+  def self.search(name, addr, email, payment, min, max)
+    if name || desc || min || max
+      min.blank? ? min = 0 : min = min.to_i
+      max = max.to_i
+      where('name LIKE ? and description LIKE ? and price >= ? and price <= ?', "%#{name}%", "%#{desc}%", min, max)
+    else
+      all
+    end
+  end
+
   private
     def check_voucher
       if voucher.present? && (voucher.valid_from > Date.today || voucher.valid_through < Date.today)

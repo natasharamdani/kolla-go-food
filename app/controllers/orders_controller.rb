@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @orders = Order.search(params[:name], params[:addr], params[:email], params[:payment], params[:min], params[:max])
   end
 
   def show
