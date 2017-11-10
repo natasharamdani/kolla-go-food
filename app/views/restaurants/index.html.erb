@@ -2,14 +2,26 @@
 
 <h1>Restaurants</h1>
 
+<%= form_tag(restaurants_path, method: :get) do %>
+  <%= text_field_tag :name, params[:name], placeholder: "Name" %>
+  <%= text_field_tag :addr, params[:addr], placeholder: "Address" %>
+  <%= text_field_tag :min,  params[:min],  placeholder: "Minimum Food Count" %>
+  <%= text_field_tag :max,  params[:max],  placeholder: "Maximum Food Count" %>
+  <%= submit_tag 'Search Restaurant', name: nil %>
+<% end %>
+
 <table>
+  <tr>
+   <th width="100px">Name</th>
+   <th width="100px">Address</th>
+ </tr>
   <% @restaurants.each do |restaurant| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
       <td><%= restaurant.name %></td>
       <td><%= restaurant.address %></td>
       <td class="list_action">
-        <%= link_to 'Show', restaurant %><br>
-        <%= link_to 'Edit', edit_restaurant_path(restaurant) %><br>
+        <%= link_to 'Show', restaurant %>
+        <%= link_to 'Edit', edit_restaurant_path(restaurant) %>
         <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
