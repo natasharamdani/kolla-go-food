@@ -345,6 +345,33 @@ User.create!(
   password: "adminadmin"
 )
 
+User.create!(
+  username: "nanda",
+  password: "nandananda"
+)
+
+Role.delete_all
+
+Role.create!(
+  name: "administrator"
+)
+
+Role.create!(
+  name: "customer"
+)
+
+# User_Role.delete_all
+
+# User_Role.create!(
+#   user_id: 1,
+#   role_id: 1
+# )
+
+# User_Role.create!(
+#   user_id: 2,
+#   role_id: 2
+# )
+
 Category.delete_all
 
 Category.create!(
