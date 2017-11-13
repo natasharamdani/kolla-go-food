@@ -19,6 +19,20 @@ class Food < ApplicationRecord
     where("name LIKE ?", "#{letter}%").order(:name)
   end
 
+  def self.search(name, desc, min, max)
+    if name || desc || min || max
+      min.blank? ? min = 0 : min = min.to_i
+      if max.blank?
+        where('name LIKE ? and description LIKE ? and price >= ?', "%#{name}%", "%#{desc}%", min)
+      else
+        max = max.to_i
+        where('name LIKE ? and description LIKE ? and price >= ? and price <= ?', "%#{name}%", "%#{desc}%", min, max)
+      end
+    else
+      all
+    end
+  end
+
   private
 
   def ensure_not_referenced_by_any_line_item

@@ -4,32 +4,39 @@ describe RestaurantsController do
   before :each do
     user = create(:user)
     session[:user_id] = user.id
+
+    @restaurant = create(:restaurant)
+    @restaurant1 = create(:restaurant, name: "Restaurant 1")
+    @restaurant2 = create(:restaurant, name: "Restaurant 2")
   end
 
   describe 'GET #index' do
     it "populates an array of all restaurants" do
-        restaurant1 = create(:restaurant, restauranter: "Nanda")
-        restaurant2 = create(:restaurant, restauranter: "Natasha")
-        get :index
-        expect(assigns(:restaurants)).to match_array([restaurant1, restaurant2])
-      end
+      get :index
+      expect(assigns(:restaurants)).to match_array([@restaurant, @restaurant1, @restaurant2])
+    end
 
-      it "renders the :index template" do
-        get :index
-        expect(response).to render_template :index
-      end
+    it "renders the :index template" do
+      get :index
+      expect(response).to render_template :index
+    end
   end
 
   describe 'GET #show' do
     it "assigns the requested restaurant to @restaurant" do
-      restaurant = create(:restaurant)
-      get :show, params: { id: restaurant }
-      expect(assigns(:restaurant)).to eq restaurant
+      get :show, params: { id: @restaurant }
+      expect(assigns(:restaurant)).to eq @restaurant
+    end
+
+    it "displays related reviews" do
+      review1 = create(:restaurant_review, reviewable: @restaurant)
+      review2 = create(:restaurant_review, reviewable: @restaurant)
+      get :show, params: { id: @restaurant }
+      expect(assigns[:restaurant].reviews).to match_array([review1, review2])
     end
 
     it "renders the :show template" do
-      restaurant = create(:restaurant)
-      get :show, params: { id: restaurant }
+      get :show, params: { id: @restaurant }
       expect(response).to render_template :show
     end
   end
@@ -42,26 +49,24 @@ describe RestaurantsController do
 
     it "renders the :new template" do
       get :new
-      expect(response).to render_template :new
+      expect(:response).to render_template :new
     end
   end
 
   describe 'GET #edit' do
     it "assigns the requested restaurant to @restaurant" do
-      restaurant = create(:restaurant)
-      get :edit, params: { id: restaurant }
-      expect(assigns(:restaurant)).to eq restaurant
+      get :edit, params: { id: @restaurant }
+      expect(assigns(:restaurant)).to eq @restaurant
     end
 
     it "renders the :edit template" do
-      restaurant = create(:restaurant)
-      get :edit, params: { id: restaurant }
+      get :edit, params: { id: @restaurant }
       expect(response).to render_template :edit
     end
   end
 
   describe 'POST #create' do
-    context 'with valid attributes' do
+    context "with valid attributes" do
       it "saves the new restaurant in the database" do
         expect{
           post :create, params: { restaurant: attributes_for(:restaurant) }
@@ -70,11 +75,11 @@ describe RestaurantsController do
 
       it "redirects to restaurants#show" do
         post :create, params: { restaurant: attributes_for(:restaurant) }
-        expect(response).to redirect_to(restaurant_path(assigns(:restaurant)))
+        expect(response).to redirect_to(restaurant_path(assigns[:restaurant]))
       end
     end
 
-    context 'without valid attributes' do
+    context "with invalid attributes" do
       it "does not save the new restaurant in the database" do
         expect{
           post :create, params: { restaurant: attributes_for(:invalid_restaurant) }
@@ -89,20 +94,16 @@ describe RestaurantsController do
   end
 
   describe 'PATCH #update' do
-    before :each do
-      @restaurant = create(:restaurant)
-    end
-
-    context 'with valid attributes' do
+    context "with valid attributes" do
       it "locates the requested @restaurant" do
         patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant) }
         expect(assigns(:restaurant)).to eq @restaurant
       end
 
       it "changes @restaurant's attributes" do
-        patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant, restauranter: 'Nanda') }
+        patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant, name: 'New Restaurant') }
         @restaurant.reload
-        expect(@restaurant.restauranter).to eq('Nanda')
+        expect(@restaurant.name).to eq('New Restaurant')
       end
 
       it "redirects to the restaurant" do
@@ -111,11 +112,11 @@ describe RestaurantsController do
       end
     end
 
-    context 'without valid attributes' do
-      it "does not update the new restaurant in the database" do
-        patch :update, params: { id: @restaurant, restaurant: attributes_for(:invalid_restaurant) }
+    context "with invalid attributes" do
+      it "does not update the restaurant in the database" do
+        patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant, name: nil) }
         @restaurant.reload
-        expect(@restaurant.restauranter).not_to eq('Nanda')
+        expect(@restaurant.name).not_to eq('New Restaurant')
       end
 
       it "re-renders the :edit template" do
@@ -126,10 +127,6 @@ describe RestaurantsController do
   end
 
   describe 'DELETE #destroy' do
-    before :each do
-      @restaurant = create(:restaurant)
-    end
-
     it "deletes the restaurant from the database" do
       expect{
         delete :destroy, params: { id: @restaurant }

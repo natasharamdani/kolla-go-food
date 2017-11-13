@@ -1,5 +1,5 @@
 class AddVoucherIdToOrders < ActiveRecord::Migration[5.1]
   def change
-    add_reference :orders, :voucher, foreign_key: true
+    add_column :orders, :voucher_id, :integer
   end
 end

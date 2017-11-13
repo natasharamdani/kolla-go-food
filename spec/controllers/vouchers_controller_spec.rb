@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe VouchersController do
+  before :each do
+    user = create(:user)
+    session[:user_id] = user.id
+  end
+
   describe 'GET #index' do
     it "populates an array of all vouchers" do
       voucher1 = create(:voucher, code: "DISKON")
@@ -37,7 +42,7 @@ describe VouchersController do
 
     it "renders the :new template" do
       get :new
-      expect(response).to render_template :new
+      expect(:response).to render_template :new
     end
   end
 
@@ -56,7 +61,7 @@ describe VouchersController do
   end
 
   describe 'POST #create' do
-    context 'with valid attributes' do
+    context "with valid attributes" do
       it "saves the new voucher in the database" do
         expect{
           post :create, params: { voucher: attributes_for(:voucher) }
@@ -65,11 +70,11 @@ describe VouchersController do
 
       it "redirects to vouchers#show" do
         post :create, params: { voucher: attributes_for(:voucher) }
-        expect(response).to redirect_to(voucher_path(assigns(:voucher)))
+        expect(response).to redirect_to(voucher_path(assigns[:voucher]))
       end
     end
 
-    context 'without valid attributes' do
+    context "with invalid attributes" do
       it "does not save the new voucher in the database" do
         expect{
           post :create, params: { voucher: attributes_for(:invalid_voucher) }
@@ -88,16 +93,16 @@ describe VouchersController do
       @voucher = create(:voucher)
     end
 
-    context 'with valid attributes' do
+    context "with valid attributes" do
       it "locates the requested @voucher" do
         patch :update, params: { id: @voucher, voucher: attributes_for(:voucher) }
         expect(assigns(:voucher)).to eq @voucher
       end
 
       it "changes @voucher's attributes" do
-        patch :update, params: { id: @voucher, voucher: attributes_for(:voucher, code: 'HEMAT') }
+        patch :update, params: { id: @voucher, voucher: attributes_for(:voucher, code: 'GRATIS') }
         @voucher.reload
-        expect(@voucher.code).to eq('HEMAT')
+        expect(@voucher.code).to eq('GRATIS')
       end
 
       it "redirects to the voucher" do
@@ -106,11 +111,11 @@ describe VouchersController do
       end
     end
 
-    context 'without valid attributes' do
-      it "does not update the new voucher in the database" do
-        patch :update, params: { id: @voucher, voucher: attributes_for(:invalid_voucher) }
+    context "with invalid attributes" do
+      it "does not update the voucher in the database" do
+        patch :update, params: { id: @voucher, voucher: attributes_for(:voucher, code: nil) }
         @voucher.reload
-        expect(@voucher.code).not_to eq('HEMAT')
+        expect(@voucher.code).not_to eq('GRATIS')
       end
 
       it "re-renders the :edit template" do

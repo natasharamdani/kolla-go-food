@@ -113,9 +113,9 @@ describe CategoriesController do
       end
 
       it "changes @category's attributes" do
-        patch :update, params: { id: @category, category: attributes_for(:category, name: 'Tradisional') }
+        patch :update, params: { id: @category, category: attributes_for(:category, name: 'New Category') }
         @category.reload
-        expect(@category.name).to eq('Tradisional')
+        expect(@category.name).to eq('New Category')
       end
 
       it "redirects to the category" do
@@ -128,7 +128,7 @@ describe CategoriesController do
       it "does not update the new category in the database" do
         patch :update, params: { id: @category, category: attributes_for(:category, name: nil) }
         @category.reload
-        expect(@category.name).not_to eq('Tradisional')
+        expect(@category.name).not_to eq('New Category')
       end
 
       it "re-renders the :edit template" do

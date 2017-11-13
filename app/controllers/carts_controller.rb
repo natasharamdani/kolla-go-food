@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
-  skip_before_action :authorize, only: [:create, :update, :destroy]
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:create, :update, :destroy]
 
   # GET /carts
   # GET /carts.json
@@ -55,16 +55,11 @@ class CartsController < ApplicationController
   # DELETE /carts/1
   # DELETE /carts/1.json
   def destroy
-    if session[:cart_id] == @cart.id
-      session[:cart_id] = nil
-      @cart.destroy
-      notice = 'Cart was successfully destroyed.'
-    else
-      notice = 'Cannot delete other session cart.'
-    end
+    @cart.destroy if @cart.id == session[:cart_id]
+    session[:cart_id] == nil
 
     respond_to do |format|
-      format.html { redirect_to store_index_path, notice: notice }
+      format.html { redirect_to store_index_url, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-      params.require(:order).permit(:name, :address, :email, :payment_type, :voucher_id)
+      params.require(:order).permit(:name, :address, :email, :payment_type, :voucher_id, :total_price)
     end
 
     def ensure_cart_isnt_empty
