@@ -6,8 +6,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @orders = Order.all
-    @orders = Order.search(params[:name], params[:addr], params[:email], params[:payment], params[:min], params[:max])
+    @orders = Order.all
   end
 
   def show
@@ -23,7 +22,6 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items(@cart)
-    @order.total_price = @order.set_total_price
 
     respond_to do |format|
       if @order.save

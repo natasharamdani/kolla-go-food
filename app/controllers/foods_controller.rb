@@ -4,8 +4,7 @@ class FoodsController < ApplicationController
   # GET /foods
   # GET /foods.json
   def index
-    # @foods = params[:letter].nil? ? Food.all : Food.by_letter(params[:letter])
-    @foods = Food.search(params[:name], params[:desc], params[:min], params[:max])
+    @foods = params[:letter].nil? ? Food.all : Food.by_letter(params[:letter])
   end
 
   # GET /foods/1

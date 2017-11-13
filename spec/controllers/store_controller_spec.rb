@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 describe StoreController do
-  describe "GET #index" do
+  describe "GET index" do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
     end
 
-    it "returns a list of foods, ordered by name" do
-      nasi_uduk = create(:food, name: "Nasi Uduk")
-      kerak_telor = create(:food, name: "Kelar Telor")
+    it "returns a list of restaurants, ordered by name" do
+      restaurant1 = create(:restaurant)
+      restaurant2 = create(:restaurant)
       get :index
-      expect(assigns(:foods)).to match_array([kerak_telor, nasi_uduk])
+      expect(assigns(:restaurants)).to eq([restaurant1, restaurant2])
     end
 
     it "includes CurrentCart" do
-      expect(StoreController.ancestors.include? CurrentCart).to eq true
+      expect(StoreController.ancestors.include? CurrentCart).to eq(true)
     end
   end
 end

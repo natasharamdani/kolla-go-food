@@ -2,10 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @restaurants = Restaurant.all
-    @restaurants = Restaurant.joins(:foods).group('restaurants.id')
-    @restaurants = @restaurants.search(params[:name], params[:addr])
-    @restaurants = @restaurants.count_food(params[:min], params[:max])
+    @restaurants = Restaurant.all
   end
 
   def show

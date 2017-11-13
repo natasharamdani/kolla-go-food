@@ -97,23 +97,23 @@ describe CartsController do
   describe "DELETE #destroy" do
     before :each do
       @cart = create(:cart)
-      @session = valid_session.merge(cart_id: @cart.id)
+      session[:cart_id] = @cart.id
     end
 
     context "with valid cart id" do
       it "destroys the requested cart" do
-        expect{
-          delete :destroy, params: { id: @cart.id }, session: @session
+        expect {
+          delete :destroy, params: { id: @cart.id }
         }.to change(Cart, :count).by(-1)
       end
 
       it "removes the cart from user's session" do
-        delete :destroy, params: { id: @cart.id }, session: @session
-        expect(session[:cart_id]).to eq nil
+        delete :destroy, params: { id: @cart.id }
+        expect(session[:id]).to eq nil
       end
 
       it "redirects to the store index" do
-        delete :destroy, params: { id: @cart.id }, session: @session
+        delete :destroy, params: { id: @cart.id }
         expect(response).to redirect_to(store_index_path)
       end
     end
@@ -122,7 +122,7 @@ describe CartsController do
       it "does not destroy the requested cart" do
         cart2 = create(:cart)
         expect{
-          delete :destroy, params: { id: cart2.id }, session: @session
+          delete :destroy, params: { id: cart2.id }
         }.not_to change(Cart, :count)
       end
 
