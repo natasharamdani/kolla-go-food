@@ -21,14 +21,14 @@ describe SessionsController do
 
       it "redirects to admin index page" do
         post :create, params: { username: 'user1', password: 'longpassword' }
-        expect(response).to redirect_to admin_index_url
+        expect(response).to redirect_to admin_index_path
       end
     end
 
     context "with invalid username and password" do
       it "redirects to login page" do
         post :create, params: { username: 'user1', password: 'wrongpassword' }
-        expect(response).to redirect_to login_url
+        expect(response).to redirect_to login_path
       end
     end
   end
@@ -45,7 +45,7 @@ describe SessionsController do
 
     it "redirects to store index page" do
       delete :destroy, params: { id: @user }
-      expect(response).to redirect_to store_index_url
+      expect(response).to redirect_to store_index_path
     end
   end
 end

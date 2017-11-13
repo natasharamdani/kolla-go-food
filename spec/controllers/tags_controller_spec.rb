@@ -4,14 +4,14 @@ describe TagsController do
   before :each do
     user = create(:user)
     session[:user_id] = user.id
-    
+
     @tag = create(:tag)
     @tag1 = create(:tag, name: "Tag 1")
     @tag2 = create(:tag, name: "Tag 2")
   end
-    
+
   describe 'GET #index' do
-    it "populates an array of all tags" do 
+    it "populates an array of all tags" do
       get :index
       expect(assigns(:tags)).to match_array([@tag, @tag1, @tag2])
     end
@@ -98,9 +98,9 @@ describe TagsController do
       end
 
       it "changes @tag's attributes" do
-        patch :update, params: { id: @tag, tag: attributes_for(:tag, name: 'Custom Tag Name') }
+        patch :update, params: { id: @tag, tag: attributes_for(:tag, name: 'New Tag') }
         @tag.reload
-        expect(@tag.name).to eq('Custom Tag Name')
+        expect(@tag.name).to eq('New Tag')
       end
 
       it "redirects to the tag" do
@@ -136,7 +136,7 @@ describe TagsController do
 
     it "redirects to tags#index" do
       delete :destroy, params: { id: @tag }
-      expect(response).to redirect_to tags_url
+      expect(response).to redirect_to tags_path
     end
   end
 end

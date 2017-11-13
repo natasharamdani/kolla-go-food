@@ -5,9 +5,9 @@ describe VouchersController do
     user = create(:user)
     session[:user_id] = user.id
   end
-    
+
   describe 'GET #index' do
-    it "populates an array of all vouchers" do 
+    it "populates an array of all vouchers" do
       voucher1 = create(:voucher, code: "GRATIS")
       voucher2 = create(:voucher, code: "DISKON")
       get :index
@@ -138,7 +138,7 @@ describe VouchersController do
 
     it "redirects to vouchers#index" do
       delete :destroy, params: { id: @voucher }
-      expect(response).to redirect_to vouchers_url
+      expect(response).to redirect_to vouchers_path
     end
   end
 end

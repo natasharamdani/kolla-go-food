@@ -106,7 +106,7 @@ describe UsersController do
 
       it "redirects to users#index" do
         patch :update, params: { id: @user, user: attributes_for(:user) }
-        expect(response).to redirect_to users_url
+        expect(response).to redirect_to users_path
       end
 
       it "disables login with old password" do
@@ -143,7 +143,7 @@ describe UsersController do
 
     it "redirects to users#index" do
       delete :destroy, params: { id: @user }
-      expect(response).to redirect_to users_url
+      expect(response).to redirect_to users_path
     end
   end
 end

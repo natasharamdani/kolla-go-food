@@ -61,7 +61,7 @@ describe OrdersController do
 
       it "redirects to the store index page" do
         get :new
-        expect(:response).to redirect_to store_index_url
+        expect(:response).to redirect_to store_index_path
       end
     end
   end
@@ -113,7 +113,7 @@ describe OrdersController do
 
       it "redirects to store index page" do
         post :create, params: { order: attributes_for(:order) }
-        expect(response).to redirect_to store_index_url
+        expect(response).to redirect_to store_index_path
       end
     end
 
@@ -181,7 +181,7 @@ describe OrdersController do
 
     it "redirects to orders#index" do
       delete :destroy, params: { id: @order }
-      expect(response).to redirect_to orders_url
+      expect(response).to redirect_to orders_path
     end
   end
 end

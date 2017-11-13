@@ -4,14 +4,14 @@ describe RestaurantsController do
   before :each do
     user = create(:user)
     session[:user_id] = user.id
-    
+
     @restaurant = create(:restaurant)
     @restaurant1 = create(:restaurant, name: "Restaurant 1")
     @restaurant2 = create(:restaurant, name: "Restaurant 2")
   end
-    
+
   describe 'GET #index' do
-    it "populates an array of all restaurants" do 
+    it "populates an array of all restaurants" do
       get :index
       expect(assigns(:restaurants)).to match_array([@restaurant, @restaurant1, @restaurant2])
     end
@@ -19,39 +19,6 @@ describe RestaurantsController do
     it "renders the :index template" do
       get :index
       expect(response).to render_template :index
-    end
-
-    describe 'with search parameters' do
-      before :each do
-        category = create(:category)
-        
-        @searched_restaurant1 = create(:restaurant, name: "Kopi Oei", address: "Sabang")
-        @searched_restaurant1.foods.create(name: "Food 1", description: "Food 1", price: 10000, category_id: category.id)
-        
-        @searched_restaurant2 = create(:restaurant, name: "Anomali Kopi", address: "Setiabudi")
-        @searched_restaurant2.foods.create(name: "Food 2", description: "Food 2", price: 10000, category_id: category.id)
-        @searched_restaurant2.foods.create(name: "Food 3", description: "Food 3", price: 10000, category_id: category.id)
-      end
-
-      it "can be searched by name" do
-        get :index, params: { search: { name_like: 'kopi' } }
-        expect(assigns(:restaurants)).to match_array([@searched_restaurant1, @searched_restaurant2])
-      end
-
-      it "can be searched by address" do
-        get :index, params: { search: { address_like: 'sabang' } }
-        expect(assigns(:restaurants)).to match_array([@searched_restaurant1])
-      end
-
-      it "can be searched by minimum foods count" do
-        get :index, params: { search: { minimum_foods_count: 2 } }
-        expect(assigns(:restaurants)).to match_array([@searched_restaurant2])
-      end
-
-      it "can be searched by maximum foods count" do
-        get :index, params: { search: { maximum_foods_count: 1 } }
-        expect(assigns(:restaurants)).to match_array([@restaurant, @restaurant1, @restaurant2, @searched_restaurant1])
-      end
     end
   end
 
@@ -134,9 +101,9 @@ describe RestaurantsController do
       end
 
       it "changes @restaurant's attributes" do
-        patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant, name: 'Custom Restaurant Name') }
+        patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant, name: 'New Restaurant') }
         @restaurant.reload
-        expect(@restaurant.name).to eq('Custom Restaurant Name')
+        expect(@restaurant.name).to eq('New Restaurant')
       end
 
       it "redirects to the restaurant" do
@@ -168,7 +135,7 @@ describe RestaurantsController do
 
     it "redirects to restaurants#index" do
       delete :destroy, params: { id: @restaurant }
-      expect(response).to redirect_to restaurants_url
+      expect(response).to redirect_to restaurants_path
     end
   end
 end
