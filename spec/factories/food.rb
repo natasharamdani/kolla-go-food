@@ -4,9 +4,7 @@ FactoryGirl.define do
     description { Faker::Food.ingredient }
     price 10000.0
     association :category
-    tag_ids {[]}
     association :restaurant
-    association :review
   end
 
   factory :invalid_food, parent: :food do

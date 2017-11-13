@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'store#index', as: 'store_index'
 
   resources :foods
-  resources :buyers
   resources :carts
   resources :line_items
   resources :categories

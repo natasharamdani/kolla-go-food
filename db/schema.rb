@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20171110080146) do
 
-  create_table "buyers", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.string "phone"
-    t.text "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,6 +37,8 @@ ActiveRecord::Schema.define(version: 20171110080146) do
   create_table "foods_tags", force: :cascade do |t|
     t.integer "food_id"
     t.integer "tag_id"
+    t.index ["food_id"], name: "index_foods_tags_on_food_id"
+    t.index ["tag_id"], name: "index_foods_tags_on_tag_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -67,7 +60,6 @@ ActiveRecord::Schema.define(version: 20171110080146) do
     t.datetime "updated_at", null: false
     t.integer "voucher_id"
     t.integer "total_price"
-    t.index ["voucher_id"], name: "index_orders_on_voucher_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
