@@ -129,9 +129,9 @@ describe FoodsController do
       end
 
       it "changes @food's attributes" do
-        patch :update, params: { id: @food, food: attributes_for(:food, name: 'Nasi Uduk') }
+        patch :update, params: { id: @food, food: attributes_for(:food, name: 'New Food') }
         @food.reload
-        expect(@food.name).to eq('Nasi Uduk')
+        expect(@food.name).to eq('New Food')
       end
 
       it "redirects to the food" do
@@ -142,9 +142,9 @@ describe FoodsController do
 
     context "with invalid attributes" do
       it "does not update the food in the database" do
-        patch :update, params: { id: @food, food: attributes_for(:food, name: 'Nasi Uduk', description: nil) }
+        patch :update, params: { id: @food, food: attributes_for(:food, name: nil) }
         @food.reload
-        expect(@food.name).not_to eq('Nasi Uduk')
+        expect(@food.name).not_to eq('New Food')
       end
 
       it "re-renders the :edit template" do

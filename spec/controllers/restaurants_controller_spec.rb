@@ -116,7 +116,7 @@ describe RestaurantsController do
       it "does not update the restaurant in the database" do
         patch :update, params: { id: @restaurant, restaurant: attributes_for(:restaurant, name: nil) }
         @restaurant.reload
-        expect(@restaurant.name).not_to eq(nil)
+        expect(@restaurant.name).not_to eq('New Restaurant')
       end
 
       it "re-renders the :edit template" do

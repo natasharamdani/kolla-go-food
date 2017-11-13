@@ -113,7 +113,7 @@ describe TagsController do
       it "does not update the tag in the database" do
         patch :update, params: { id: @tag, tag: attributes_for(:tag, name: nil) }
         @tag.reload
-        expect(@tag.name).not_to eq(nil)
+        expect(@tag.name).not_to eq('New Tag')
       end
 
       it "re-renders the :edit template" do

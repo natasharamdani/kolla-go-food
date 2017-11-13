@@ -8,8 +8,8 @@ describe VouchersController do
 
   describe 'GET #index' do
     it "populates an array of all vouchers" do
-      voucher1 = create(:voucher, code: "GRATIS")
-      voucher2 = create(:voucher, code: "DISKON")
+      voucher1 = create(:voucher, code: "DISKON")
+      voucher2 = create(:voucher, code: "HEMAT")
       get :index
       expect(assigns(:vouchers)).to match_array([voucher1, voucher2])
     end
@@ -113,7 +113,7 @@ describe VouchersController do
 
     context "with invalid attributes" do
       it "does not update the voucher in the database" do
-        patch :update, params: { id: @voucher, voucher: attributes_for(:voucher, code: 'GRATIS', valid_from: nil) }
+        patch :update, params: { id: @voucher, voucher: attributes_for(:voucher, code: nil) }
         @voucher.reload
         expect(@voucher.code).not_to eq('GRATIS')
       end

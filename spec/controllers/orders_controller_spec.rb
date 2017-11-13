@@ -156,7 +156,7 @@ describe OrdersController do
 
     context "with invalid attributes" do
       it "does not update the order in the database" do
-        patch :update, params: { id: @order, order: attributes_for(:order, name: 'Buyer 1', address: nil) }
+        patch :update, params: { id: @order, order: attributes_for(:order, name: nil) }
         @order.reload
         expect(@order.name).not_to eq('Buyer 1')
       end
