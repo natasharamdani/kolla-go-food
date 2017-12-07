@@ -69,7 +69,7 @@ describe Order do
     line_item1 = create(:line_item, order: order, food: food1)
     line_item2 = create(:line_item, order: order, food: food2, quantity: 2)
 
-    expect(order.total_price).to eq(50000)
+    expect(order.sub_total_price).to eq(50000)
   end
 
   describe "adding voucher to order" do
@@ -82,21 +82,21 @@ describe Order do
         voucher = create(:voucher, amount: 25, unit: "Percent", max_amount: 15000)
         order = create(:order, voucher: voucher)
         line_item = create(:line_item, order: order, food: @food)
-        expect(order.final_price).to eq(85000)
+        expect(order.set_total_price).to eq(85000)
       end
 
       it "can calculate price_after_discount with rupiah as unit" do
         voucher = create(:voucher, amount: 15000, unit: "Rupiah", max_amount: 15000)
         order = create(:order, voucher: voucher)
         line_item = create(:line_item, order: order, food: @food)
-        expect(order.final_price).to eq(85000)
+        expect(order.set_total_price).to eq(85000)
       end
     end
 
     context "with invalid voucher" do
       it "is invalid with invalid voucher" do
         voucher = create(:voucher, valid_through: 1.day.ago)
-        order = create(:order, voucher: voucher)
+        order = build(:order, voucher: voucher)
         order.valid?
         expect(order.errors[:base]).to include("must use valid voucher")
       end
