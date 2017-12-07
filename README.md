@@ -24,6 +24,12 @@ rails new go-food
 cd go-food
 ```
 
+### Install dependencies
+
+```
+bundle install
+```
+
 ### Create Database
 
 ```
