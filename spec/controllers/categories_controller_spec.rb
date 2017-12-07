@@ -34,8 +34,8 @@ describe CategoriesController do
 
     it "populates an array of all foods in the category" do
       category = create(:category)
-      food1 = create(:food, category: category)
-      food2 = create(:food, category: category)
+      food1 = create(:food, name: "food1", category: category)
+      food2 = create(:food, name: "food2", category: category)
       get :show, params: { id: category }
       expect(assigns(:category).foods).to match_array([food1, food2])
     end
