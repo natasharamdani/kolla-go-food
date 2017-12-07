@@ -5,7 +5,7 @@ describe FoodsController do
     user = create(:user)
     session[:user_id] = user.id
 
-    @food = create(:food, price: 10000)
+    @food = create(:food, name: "Bir Pletok", price: 10000)
   end
 
   it "includes CurrentCart" do
@@ -33,7 +33,7 @@ describe FoodsController do
     context 'without params[:letter]' do
       it "populates an array of all foods" do
         get :index
-        expect(assigns(:foods)).to match_array([@nasi_uduk, @kerak_telor])
+        expect(assigns(:foods)).to match_array([@food, @nasi_uduk, @kerak_telor])
       end
 
       it "renders the :index template" do

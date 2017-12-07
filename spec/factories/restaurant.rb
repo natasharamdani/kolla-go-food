@@ -4,7 +4,8 @@ FactoryGirl.define do
       "restaurant#{n}"
     end
     address { Faker::Address.city }
-    association :review
+
+    # association :review
   end
 
   factory :invalid_restaurant, parent: :restaurant do

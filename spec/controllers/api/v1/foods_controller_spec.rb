@@ -11,7 +11,7 @@ describe Api::V1::FoodsController do
       kerak_telor = create(:food, name: "Kelar Telor")
 
       get :index, format: 'json'
-      expect(assigns(:foods)).to match_array([nasi_uduk, kerak_telor])
+      expect(assigns(:foods)).to match_array([@food, nasi_uduk, kerak_telor])
     end
   end
 
@@ -40,13 +40,6 @@ describe Api::V1::FoodsController do
         expect{
           post :create, params: { food: attributes_for(:food, category_id: category.id, restaurant_id: restaurant.id, tag_ids: [tag1.id, tag2.id]) }, format: 'json'
         }.to change(Food, :count).by(1)
-      end
-
-      it "redirects to foods#show" do
-        category = create(:category)
-        restaurant = create(:restaurant)
-        post :create, params: { food: attributes_for(:food, category_id: category.id, restaurant_id: restaurant.id) }, format: 'json'
-        expect(response).to redirect_to(food_path(assigns[:food]))
       end
     end
 
